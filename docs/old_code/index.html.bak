@@ -9,14 +9,13 @@
         content="Đối tác chính thức TradingView tại Việt Nam. Giá rẻ hơn 20-50% so với giá gốc. Essential, Plus, Premium với ưu đãi đặc biệt.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon.png">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20251120223807">
 </head>
 
 <body>
@@ -384,7 +383,7 @@
         </div>
     </footer>
 
-    <script src="assets/js/script.js?v=20260221202930"></script>
+    <script src="assets/js/script.js?v=20251120223807"></script>
 </body>
 
 </html>
