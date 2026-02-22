@@ -209,16 +209,25 @@ console.log('%c🚀 TradingView.vn', 'color: #2962FF; font-size: 24px; font-weig
 console.log('%cGiá tốt nhất thị trường! 💰', 'color: #00E676; font-size: 16px;');
 console.log('%cLiên hệ: Zalo 0986595475 | Telegram @dinhtienvu', 'color: #B2B5BE; font-size: 12px;');
 
-// First visit affiliate redirect
+// First visit affiliate redirect with 30-day expiry
 (function () {
     const AFF_URL = 'https://vn.tradingview.com/?aff_id=122256';
-    const STORAGE_KEY = 'tv_visited_aff';
+    const STORAGE_KEY = 'tv_aff_last_redirect';
+    const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+
+    const shouldRedirect = () => {
+        const lastRedirect = localStorage.getItem(STORAGE_KEY);
+        if (!lastRedirect) return true;
+
+        const now = Date.now();
+        return (now - parseInt(lastRedirect)) > THIRTY_DAYS_MS;
+    };
 
     // Function to open affiliate link with preservation of context
     const openAffiliate = () => {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-            // Set storage immediately
-            localStorage.setItem(STORAGE_KEY, 'true');
+        if (shouldRedirect()) {
+            // Set current timestamp
+            localStorage.setItem(STORAGE_KEY, Date.now().toString());
 
             // Get current URL
             const currentUrl = window.location.href;
@@ -228,25 +237,25 @@ console.log('%cLiên hệ: Zalo 0986595475 | Telegram @dinhtienvu', 'color: #B2B
 
             if (newTab) {
                 // Redirect THE CURRENT ACTIVE TAB to the affiliate link
-                // This is seamless for the user as they clicked and the "page changed"
                 window.location.href = AFF_URL;
             }
         }
     };
 
     // Listen for the first interaction
-    // We use a combination of events to ensure it triggers on the first genuine interaction
     const triggerEvents = ['click', 'touchstart'];
 
     const handleFirstInteraction = () => {
-        openAffiliate();
-        // Remove listeners after first trigger
+        if (shouldRedirect()) {
+            openAffiliate();
+        }
+        // Remove listeners after first attempt
         triggerEvents.forEach(event => {
             document.removeEventListener(event, handleFirstInteraction);
         });
     };
 
-    if (!localStorage.getItem(STORAGE_KEY)) {
+    if (shouldRedirect()) {
         triggerEvents.forEach(event => {
             document.addEventListener(event, handleFirstInteraction, { passive: true });
         });
