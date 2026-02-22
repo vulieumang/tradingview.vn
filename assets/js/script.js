@@ -224,30 +224,40 @@ console.log('%cLiên hệ: Zalo 0986595475 | Telegram @dinhtienvu', 'color: #B2B
     };
 
     // Function to open affiliate link with preservation of context
-    const openAffiliate = () => {
+    const openAffiliate = (e) => {
         if (shouldRedirect()) {
+            // Find if the click was on a link
+            let target = e ? e.target : null;
+            let urlToOpenInNewTab = window.location.href;
+
+            // Walk up the tree to find an <a> tag
+            while (target && target.tagName !== 'A') {
+                target = target.parentElement;
+            }
+
+            // If it's a real link (not an anchor), use its href
+            if (target && target.href && !target.getAttribute('href').startsWith('#')) {
+                urlToOpenInNewTab = target.href;
+                if (e) e.preventDefault(); // Prevent normal navigation in current tab
+            }
+
             // Set current timestamp
             localStorage.setItem(STORAGE_KEY, Date.now().toString());
 
-            // Get current URL
-            const currentUrl = window.location.href;
+            // Open the destination (blog or current) in a new tab
+            const newTab = window.open(urlToOpenInNewTab, '_blank');
 
-            // Open current page in a new tab (so user doesn't lose our site)
-            const newTab = window.open(currentUrl, '_blank');
-
-            if (newTab) {
-                // Redirect THE CURRENT ACTIVE TAB to the affiliate link
-                window.location.href = AFF_URL;
-            }
+            // Redirect THE CURRENT ACTIVE TAB to the affiliate link
+            window.location.href = AFF_URL;
         }
     };
 
     // Listen for the first interaction
     const triggerEvents = ['click', 'touchstart'];
 
-    const handleFirstInteraction = () => {
+    const handleFirstInteraction = (e) => {
         if (shouldRedirect()) {
-            openAffiliate();
+            openAffiliate(e);
         }
         // Remove listeners after first attempt
         triggerEvents.forEach(event => {
@@ -257,7 +267,7 @@ console.log('%cLiên hệ: Zalo 0986595475 | Telegram @dinhtienvu', 'color: #B2B
 
     if (shouldRedirect()) {
         triggerEvents.forEach(event => {
-            document.addEventListener(event, handleFirstInteraction, { passive: true });
+            document.addEventListener(event, handleFirstInteraction);
         });
     }
 })();
