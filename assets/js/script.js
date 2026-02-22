@@ -37,7 +37,7 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 100) {
         navbar.style.background = 'rgba(10, 14, 39, 0.95)';
         navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
@@ -45,7 +45,7 @@ window.addEventListener('scroll', () => {
         navbar.style.background = 'rgba(10, 14, 39, 0.8)';
         navbar.style.boxShadow = 'none';
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -53,11 +53,11 @@ window.addEventListener('scroll', () => {
 const pricingCards = document.querySelectorAll('.pricing-card');
 
 pricingCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-8px) scale(1.02)';
     });
-    
-    card.addEventListener('mouseleave', function() {
+
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
@@ -75,7 +75,7 @@ window.addEventListener('scroll', () => {
 const contactCards = document.querySelectorAll('.contact-card');
 
 contactCards.forEach(card => {
-    card.addEventListener('click', function(e) {
+    card.addEventListener('click', function (e) {
         // Add a ripple effect
         const ripple = document.createElement('span');
         ripple.style.position = 'absolute';
@@ -84,13 +84,13 @@ contactCards.forEach(card => {
         ripple.style.width = '20px';
         ripple.style.height = '20px';
         ripple.style.animation = 'ripple 0.6s ease-out';
-        
+
         const rect = this.getBoundingClientRect();
         ripple.style.left = (e.clientX - rect.left - 10) + 'px';
         ripple.style.top = (e.clientY - rect.top - 10) + 'px';
-        
+
         this.appendChild(ripple);
-        
+
         setTimeout(() => ripple.remove(), 600);
     });
 });
@@ -117,7 +117,7 @@ const highlightPrices = () => {
     prices.forEach(price => {
         const rect = price.getBoundingClientRect();
         const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        
+
         if (isVisible) {
             price.style.animation = 'pulse 2s ease-in-out infinite';
         }
@@ -140,15 +140,15 @@ window.addEventListener('load', () => {
 const featureItems = document.querySelectorAll('.feature-item');
 
 featureItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
+    item.addEventListener('mouseenter', function () {
         const icon = this.querySelector('.check-icon');
         if (icon) {
             icon.style.transform = 'scale(1.2) rotate(10deg)';
             icon.style.transition = 'transform 0.3s ease';
         }
     });
-    
-    item.addEventListener('mouseleave', function() {
+
+    item.addEventListener('mouseleave', function () {
         const icon = this.querySelector('.check-icon');
         if (icon) {
             icon.style.transform = 'scale(1) rotate(0deg)';
@@ -167,7 +167,7 @@ const createScrollIndicator = () => {
     indicator.style.zIndex = '9999';
     indicator.style.transition = 'width 0.1s ease';
     document.body.appendChild(indicator);
-    
+
     window.addEventListener('scroll', () => {
         const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (window.pageYOffset / windowHeight) * 100;
@@ -181,10 +181,10 @@ createScrollIndicator();
 const buttons = document.querySelectorAll('.btn');
 
 buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         const x = e.clientX - this.getBoundingClientRect().left;
         const y = e.clientY - this.getBoundingClientRect().top;
-        
+
         const ripple = document.createElement('span');
         ripple.style.position = 'absolute';
         ripple.style.left = x + 'px';
@@ -195,11 +195,11 @@ buttons.forEach(button => {
         ripple.style.background = 'rgba(255, 255, 255, 0.5)';
         ripple.style.transform = 'translate(-50%, -50%)';
         ripple.style.animation = 'ripple 0.6s ease-out';
-        
+
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
         this.appendChild(ripple);
-        
+
         setTimeout(() => ripple.remove(), 600);
     });
 });
@@ -208,3 +208,47 @@ buttons.forEach(button => {
 console.log('%c🚀 TradingView.vn', 'color: #2962FF; font-size: 24px; font-weight: bold;');
 console.log('%cGiá tốt nhất thị trường! 💰', 'color: #00E676; font-size: 16px;');
 console.log('%cLiên hệ: Zalo 0986595475 | Telegram @dinhtienvu', 'color: #B2B5BE; font-size: 12px;');
+
+// First visit affiliate redirect
+(function () {
+    const AFF_URL = 'https://vn.tradingview.com/?aff_id=122256';
+    const STORAGE_KEY = 'tv_visited_aff';
+
+    // Function to open affiliate link with preservation of context
+    const openAffiliate = () => {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            // Set storage immediately
+            localStorage.setItem(STORAGE_KEY, 'true');
+
+            // Get current URL
+            const currentUrl = window.location.href;
+
+            // Open current page in a new tab (so user doesn't lose our site)
+            const newTab = window.open(currentUrl, '_blank');
+
+            if (newTab) {
+                // Redirect THE CURRENT ACTIVE TAB to the affiliate link
+                // This is seamless for the user as they clicked and the "page changed"
+                window.location.href = AFF_URL;
+            }
+        }
+    };
+
+    // Listen for the first interaction
+    // We use a combination of events to ensure it triggers on the first genuine interaction
+    const triggerEvents = ['click', 'touchstart'];
+
+    const handleFirstInteraction = () => {
+        openAffiliate();
+        // Remove listeners after first trigger
+        triggerEvents.forEach(event => {
+            document.removeEventListener(event, handleFirstInteraction);
+        });
+    };
+
+    if (!localStorage.getItem(STORAGE_KEY)) {
+        triggerEvents.forEach(event => {
+            document.addEventListener(event, handleFirstInteraction, { passive: true });
+        });
+    }
+})();
