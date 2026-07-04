@@ -39,10 +39,10 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > 100) {
-        navbar.style.background = 'rgba(10, 14, 39, 0.95)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = '0 8px 30px rgba(5, 150, 105, 0.05)';
     } else {
-        navbar.style.background = 'rgba(10, 14, 39, 0.8)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.85)';
         navbar.style.boxShadow = 'none';
     }
 
@@ -163,7 +163,7 @@ const createScrollIndicator = () => {
     indicator.style.top = '0';
     indicator.style.left = '0';
     indicator.style.height = '3px';
-    indicator.style.background = 'linear-gradient(90deg, #2962FF 0%, #00E676 100%)';
+    indicator.style.background = 'linear-gradient(90deg, #059669 0%, #0284C7 100%)';
     indicator.style.zIndex = '9999';
     indicator.style.transition = 'width 0.1s ease';
     document.body.appendChild(indicator);
@@ -205,7 +205,7 @@ buttons.forEach(button => {
 });
 
 // Console easter egg
-console.log('%c🚀 TradingView.vn', 'color: #2962FF; font-size: 24px; font-weight: bold;');
+console.log('%c🚀 TradingView.vn', 'color: #059669; font-size: 24px; font-weight: bold;');
 console.log('%cGiá tốt nhất thị trường! 💰', 'color: #00E676; font-size: 16px;');
 console.log('%cLiên hệ: Zalo 0986595475 | Telegram @dinhtienvu', 'color: #B2B5BE; font-size: 12px;');
 
