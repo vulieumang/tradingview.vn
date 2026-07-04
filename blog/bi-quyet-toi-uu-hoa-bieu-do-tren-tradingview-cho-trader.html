@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bí Quyết Tối Ưu Hóa Tốc Độ Biểu Đồ TradingView - TradingView.vn</title>
+    <meta name="description"
+        content="Mẹo dọn dẹp bộ nhớ đệm, tối ưu hiệu suất RAM, và tăng tốc độ tải biểu đồ TradingView mượt mà hơn khi dùng nhiều chỉ báo cùng lúc.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="#059669" />
+                    <path d="M8 24V8H12V20H20V24H8Z" fill="white" />
+                    <path d="M16 8H20V16H24V20H16V8Z" fill="white" />
+                </svg>
+                <span>TradingView.vn</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Mẹo vặt</span>
+            </div>
+            <h1 class="article-hero-title">Bí Quyết Tối Ưu Hóa Tốc Độ Load Biểu Đồ Trên TradingView</h1>
+            <div class="article-meta">
+                <span>📅 04 Tháng 7, 2026</span>
+                <span>⏱️ 5 phút đọc</span>
+                <span>✍️ Admin TradingViewVN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/blog_alerts.png" alt="Tối ưu biểu đồ TradingView" class="article-featured-image">
+
+            <div class="article-body">
+                <p>Nhiều nhà giao dịch thường gặp hiện tượng biểu đồ <strong>TradingView bị chậm, lag</strong> hoặc đơ khi mở nhiều khung thời gian, nhiều tab trình duyệt hoặc load các chỉ báo kỹ thuật nặng. Bài viết này sẽ hướng dẫn bạn các bí quyết tối ưu phần cứng và cài đặt phần mềm để trải nghiệm phân tích luôn mượt mà nhất.</p>
+
+                <h2>1. Dọn dẹp bộ nhớ Cache trình duyệt định kỳ</h2>
+                <p>TradingView lưu trữ rất nhiều dữ liệu lịch sử giá dưới dạng cache trong trình duyệt của bạn. Sau một thời gian dài sử dụng, lượng dữ liệu này phình to và có thể gây xung đột làm chậm hệ thống. Cách khắc phục nhanh nhất:</p>
+                <ul>
+                    <li>Nhấn tổ hợp phím <code>Ctrl + Shift + Delete</code> (trên Windows) hoặc <code>Cmd + Shift + Delete</code> (trên Mac).</li>
+                    <li>Chọn xóa bộ nhớ đệm (Cached images and files) và Cookies của trang web TradingView.</li>
+                </ul>
+
+                <h2>2. Tắt các chỉ báo không dùng tới</h2>
+                <p>Mỗi chỉ báo kỹ thuật (Indicator) trên biểu đồ của bạn đều yêu cầu máy tính tính toán liên tục theo thời gian thực. Việc chồng chất 10-15 chỉ báo tự chế hoặc các tập lệnh Pine Script phức tạp là nguyên nhân hàng đầu khiến RAM và CPU của máy bị quá tải. Hãy giữ biểu đồ tối giản, chỉ bật những chỉ báo thực sự cần thiết cho chiến lược giao dịch.</p>
+
+                <blockquote>
+                    "Một biểu đồ tinh gọn không chỉ giúp máy tính chạy mượt hơn mà còn giúp tâm lý giao dịch của trader trở nên sáng suốt và ít bị nhiễu loạn hơn."
+                </blockquote>
+
+                <h2>3. Bật tăng tốc phần cứng (Hardware Acceleration) trên Chrome/Brave</h2>
+                <p>Đảm bảo trình duyệt của bạn đã được kích hoạt tính năng Hardware Acceleration. Tính năng này cho phép trình duyệt tận dụng sức mạnh của Card đồ họa (GPU) để render mượt mà các biểu đồ dạng Vector thay vì bắt CPU gánh toàn bộ tác vụ xử lý hình ảnh.</p>
+                <p><strong>Cách bật:</strong> Vào Cài đặt trình duyệt &rarr; System and performance &rarr; Kích hoạt dòng "Use graphics acceleration when available".</p>
+
+                <h2>4. Sử dụng ứng dụng TradingView Desktop chuyên dụng</h2>
+                <p>Thay vì sử dụng trên tab trình duyệt web thông thường, hãy tải xuống ứng dụng <strong>TradingView Desktop</strong> chính thức từ trang chủ. Phiên bản Desktop được tối ưu riêng biệt cho hệ điều hành, giúp quản lý đa màn hình tốt hơn và ngốn ít RAM hơn hẳn so với Google Chrome.</p>
+            </div>
+
+            <div class="article-cta">
+                <h3>Nhận Gói Cài Đặt Và Dọn Dẹp Máy Tính Miễn Phí</h3>
+                <p>Mua tài khoản tại TradingView.vn để được hỗ trợ dọn rác, tối ưu hiệu năng máy tính giúp load biểu đồ siêu tốc.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Liên Hệ Hỗ Trợ Ngay</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="6" fill="url(#footerLogoGradient)" />
+                        <path d="M8 24V8H12V20H20V24H8Z" fill="white" />
+                        <path d="M16 8H20V16H24V20H16V8Z" fill="white" />
+                        <defs>
+                            <linearGradient id="footerLogoGradient" x1="4" y1="4" x2="28" y2="28">
+                                <stop offset="0%" stop-color="#059669" />
+                                <stop offset="100%" stop-color="#0284C7" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>TradingView.vn</span>
+                </div>
+                <p class="footer-text">© 2025 TradingViewVN — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>
