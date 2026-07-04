@@ -78,6 +78,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 labels[0].textContent = d.label_official_price;
                 labels[1].textContent = d.label_our_price;
             }
+
+            // Price values & Savings
+            const officialVal = p1.querySelector(".official-price .price-value");
+            if (officialVal) officialVal.innerHTML = d.essential_official_val;
+            
+            const officialVnd = p1.querySelector(".official-price .price-vnd");
+            if (officialVnd) {
+                if (d.essential_official_vnd) {
+                    officialVnd.textContent = d.essential_official_vnd;
+                    officialVnd.style.display = "block";
+                } else {
+                    officialVnd.style.display = "none";
+                }
+            }
+            
+            const officialYearly = p1.querySelector(".official-price .price-yearly");
+            if (officialYearly) officialYearly.textContent = d.essential_official_yearly;
+            
+            const ourVal = p1.querySelector(".our-price .price-value");
+            if (ourVal) ourVal.innerHTML = d.essential_our_val;
+            
+            const savings = p1.querySelector(".our-price .savings");
+            if (savings) {
+                const svg = savings.querySelector("svg");
+                savings.textContent = " " + d.essential_savings;
+                if (svg) savings.insertBefore(svg, savings.firstChild);
+            }
             
             const features = p1.querySelectorAll(".features .feature-item span");
             if (features.length >= 4) {
@@ -102,6 +129,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 labels[0].textContent = d.label_official_price;
                 labels[1].textContent = d.label_our_price;
             }
+
+            // Price values & Savings
+            const officialVal = p2.querySelector(".official-price .price-value");
+            if (officialVal) officialVal.innerHTML = d.plus_official_val;
+            
+            const officialVnd = p2.querySelector(".official-price .price-vnd");
+            if (officialVnd) {
+                if (d.plus_official_vnd) {
+                    officialVnd.textContent = d.plus_official_vnd;
+                    officialVnd.style.display = "block";
+                } else {
+                    officialVnd.style.display = "none";
+                }
+            }
+            
+            const officialYearly = p2.querySelector(".official-price .price-yearly");
+            if (officialYearly) officialYearly.textContent = d.plus_official_yearly;
+            
+            const ourVal = p2.querySelector(".our-price .price-value");
+            if (ourVal) ourVal.innerHTML = d.plus_our_val;
+            
+            const savings = p2.querySelector(".our-price .savings");
+            if (savings) {
+                const svg = savings.querySelector("svg");
+                savings.textContent = " " + d.plus_savings;
+                if (svg) savings.insertBefore(svg, savings.firstChild);
+            }
             
             const features = p2.querySelectorAll(".features .feature-item span");
             if (features.length >= 4) {
@@ -125,6 +179,43 @@ document.addEventListener("DOMContentLoaded", () => {
             if (labels.length >= 2) {
                 labels[0].textContent = d.label_official_price;
                 labels[1].textContent = d.label_our_price;
+            }
+
+            // Price values & Savings
+            const officialVal = p3.querySelector(".official-price .price-value");
+            if (officialVal) officialVal.innerHTML = d.premium_official_val;
+            
+            const officialVnd = p3.querySelector(".official-price .price-vnd");
+            if (officialVnd) {
+                if (d.premium_official_vnd) {
+                    officialVnd.textContent = d.premium_official_vnd;
+                    officialVnd.style.display = "block";
+                } else {
+                    officialVnd.style.display = "none";
+                }
+            }
+            
+            const officialYearly = p3.querySelector(".official-price .price-yearly");
+            if (officialYearly) officialYearly.textContent = d.premium_official_yearly;
+            
+            const ourVal = p3.querySelector(".our-price .price-value");
+            if (ourVal) ourVal.innerHTML = d.premium_our_val;
+
+            const ourNote = p3.querySelector(".our-price .price-note");
+            if (ourNote) {
+                if (d.premium_our_note) {
+                    ourNote.textContent = d.premium_our_note;
+                    ourNote.style.display = "block";
+                } else {
+                    ourNote.style.display = "none";
+                }
+            }
+            
+            const savings = p3.querySelector(".our-price .savings");
+            if (savings) {
+                const svg = savings.querySelector("svg");
+                savings.textContent = " " + d.premium_savings;
+                if (svg) savings.insertBefore(svg, savings.firstChild);
             }
             
             const features = p3.querySelectorAll(".features .feature-item span");
@@ -233,6 +324,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const contactDesc = document.querySelector("#contact .contact-description");
         if (contactDesc) contactDesc.textContent = d.contact_desc;
         
+        const usdtLabel = document.querySelector("[data-i18n-usdt-label]");
+        if (usdtLabel) usdtLabel.textContent = d.contact_usdt_label;
+        const usdtValue = document.querySelector("[data-i18n-usdt-value]");
+        if (usdtValue) usdtValue.textContent = d.contact_usdt_value;
+
         const trustItems = document.querySelectorAll("#contact .trust-item span");
         if (trustItems.length >= 3) {
             trustItems[0].textContent = d.trust_reputation;
