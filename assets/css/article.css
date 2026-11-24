@@ -107,3 +107,10 @@
     margin-bottom: var(--spacing-xl);
     opacity: 0.9;
 }
+
+/* Shared vector brand lockup, including outlined lettering. */
+.navbar .brand-lockup { display: block; width: 228px; height: auto; }
+.footer-logo .brand-lockup { display: block; width: 204px; height: auto; }
+@media (max-width: 600px) {
+    .navbar .brand-lockup { width: 192px; }
+}

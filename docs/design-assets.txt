@@ -1,0 +1,23 @@
+Tài nguyên hình ảnh cho giao diện đã duyệt
+
+Công cụ: imagegen tích hợp (không dùng CLI/API riêng).
+Ảnh tham chiếu: bản thiết kế website đã được người dùng duyệt trong cuộc trò chuyện.
+Ảnh đầu ra đã được chuyển sang WebP và thu nhỏ phục vụ website.
+
+Tệp được sử dụng:
+- assets/images/hero-tradingview.webp: ảnh đầu trang, bản lớn.
+- assets/images/hero-tradingview-1200.webp: ảnh đầu trang, bản nhẹ.
+- assets/images/ai-orb.webp: quả cầu AI, giữ kênh trong suốt.
+
+Prompt ảnh đầu trang:
+Create a production website hero BACKGROUND ASSET based precisely on the HERO SECTION in the supplied approved TradingView.vn website mockup. Deliver a wide landscape image approximately 1800x850. Remove ALL website text, logo, navigation, yellow buttons, red discount badge, stats band, pricing cards and every lower website section. Keep ONLY the hero art environment: luminous white/ice-blue on LEFT HALF with very subtle blue swooshes, beautifully realistic dark silver laptop occupying the RIGHT HALF from x=50% to 96%, dark navy teal/red trading candlestick screen, large shiny electric-blue upward swooping arrow BEHIND the laptop, soft rising candle silhouettes in background upper right, metallic floor and reflection. The left 48 percent must be essentially empty pale ice-blue for real HTML heading, large offer text, subtitle and buttons to be added later. Match laptop scale and angle and blue arrow of the approved image closely. Laptop must be fully visible inside canvas including base, near bottom-right. Header and all text must be completely absent, only naturally occurring tiny chart labels on laptop screen allowed. No 70%, no badge, no words outside laptop screen, no decorative gold objects. Pure high quality seamless edge-to-edge hero artwork, not a screenshot of a site.
+
+Prompt quả cầu AI:
+Generate ONE isolated production website illustration asset based on the blue glowing AI orb in the gifts section of the supplied approved website mockup. A brilliant sapphire-blue translucent glass sphere with subtle fine white triangulated network and points on its surface, the exact bold white capital letters "AI" on its front, a thin silver-white orbital ring around it, resting on a short circular brushed silver and electric-blue pedestal. Sophisticated glossy 3D commercial illustration, soft studio light, same appearance as the reference small blue orb. Centered object, complete sphere/ring/pedestal visible inside canvas, small transparent margin. TRANSPARENT BACKGROUND, no background plane, no card container, no Google logo, no NotebookLM logo, no website UI, no other text except AI.
+
+Logo TradingView.vn (vector):
+- assets/icons/logo.svg: logo đầy đủ, chữ được chuyển thành đường vector.
+- assets/icons/brand-mark.svg: biểu tượng độc lập.
+- assets/icons/brand-mark.png: biểu tượng PNG 1024px nền trong suốt.
+- assets/icons/favicon.svg, favicon-16.png, favicon-32.png, favicon.png, favicon.icns: các phiên bản favicon đồng bộ.
+Thiết kế SVG trực tiếp, không dùng ImageGen cho logo. Biểu đồ dùng Phosphor Icons (MIT, assets/icons/ui/LICENSE); nét chữ dùng Outfit (SIL OFL, assets/fonts/OFL-Outfit.txt).

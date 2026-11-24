@@ -7,626 +7,202 @@
     <title>TradingView.vn - Giá Tốt Nhất Thị Trường</title>
     <meta name="description"
         content="Đối tác chính thức TradingView tại Việt Nam. Giá rẻ hơn 20-50% so với giá gốc. Essential, Plus, Premium với ưu đãi đặc biệt.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon.png">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260221202930">
+    <link rel="preload" href="assets/fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/images/hero-tradingview.webp" as="image" imagesrcset="assets/images/hero-tradingview-1200.webp 1200w, assets/images/hero-tradingview.webp 1825w" imagesizes="100vw" fetchpriority="high">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon.png?v=20261124-brand1">
+    <link rel="stylesheet" href="assets/css/fonts.css?v=20261124213243">
+    <link rel="stylesheet" href="assets/css/homepage.css?v=20261124213243">
 </head>
 
 <body>
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-background"></div>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <rect width="32" height="32" rx="6" fill="url(#logoGradient)" />
-                        <path d="M8 24V8H12V20H20V24H8Z" fill="white" />
-                        <path d="M16 8H20V16H24V20H16V8Z" fill="white" />
-                        <defs>
-                            <linearGradient id="logoGradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#059669" />
-                                <stop offset="100%" stop-color="#0284C7" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <span>TradingView.vn</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#pricing">Bảng Giá</a>
-                    <a href="#blog">Bài Viết</a>
-                    <a href="#contact">Liên Hệ</a>
-                </div>
-            </nav>
-
-            <div class="hero-grid">
-                <div class="hero-text-content">
-                    <div class="badge">Đối tác uy tín hàng đầu</div>
-                    <h1 class="hero-title">
-                        Tiết Kiệm Đến <span class="highlight">70%</span><br>
-                        TradingView Premium
-                    </h1>
-                    <p class="hero-subtitle">
-                        Nâng cấp tài khoản TradingView chính hãng giá tốt nhất thị trường. Kích hoạt nhanh chóng, bảo hành trọn đời gói mua.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#pricing" class="btn btn-primary">Xem Bảng Giá</a>
-                        <a href="#contact" class="btn btn-secondary">Liên Hệ Ngay</a>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="hero-image-container">
-                        <img src="assets/images/image.png" alt="TradingView Chart Interface" class="hero-mockup" />
-                        <div class="hero-glow"></div>
-                    </div>
-                </div>
+    <a class="skip-link" href="#main" data-i18n="skip_content">Đến nội dung chính</a>
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Điều hướng chính">
+            <a class="logo" href="./" aria-label="TradingView.vn - Trang chủ">
+                <img class="brand-lockup" src="assets/icons/logo.svg?v=20261124-brand1" width="384" height="64" alt="TradingView.vn">
+            </a>
+            <div class="nav-links" id="navigation">
+                <a href="#pricing" data-i18n="nav_pricing">Bảng Giá</a>
+                <a href="#blog" data-i18n="nav_blog">Bài Viết</a>
+                <a href="#contact" data-i18n="nav_contact">Liên Hệ</a>
             </div>
-
-            <div class="stats-banner">
-                <div class="stat-item">
-                    <div class="stat-number">1,000+</div>
-                    <div class="stat-label">Khách hàng tin dùng</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number">9h - 23h</div>
-                    <div class="stat-label">Hỗ trợ nhanh chóng</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-label">Tiết kiệm chi phí</div>
-                </div>
+            <div class="nav-actions">
+                <label class="language-control"><span class="sr-only" data-i18n="language_label">Ngôn ngữ</span>
+                    <select id="language-select" name="language">
+                        <option value="vi" lang="vi">Tiếng Việt</option>
+                        <option value="en" lang="en">English</option>
+                        <option value="fr" lang="fr">Français</option>
+                        <option value="zh" lang="zh">中文</option>
+                    </select>
+                </label>
+                <a class="btn btn-blue nav-cta" href="#contact" data-i18n="nav_consult">Nhận tư vấn</a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Mở menu">
+                    <span class="icon icon-menu" aria-hidden="true"></span>
+                </button>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">So Sánh Giá Với TradingView Chính Thức</h2>
-                <p class="section-subtitle">Tiết kiệm hàng triệu đồng mỗi năm với TradingView.vn</p>
+    <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-art" aria-hidden="true">
+                <img src="assets/images/hero-tradingview.webp" srcset="assets/images/hero-tradingview-1200.webp 1200w, assets/images/hero-tradingview.webp 1825w" sizes="100vw" width="1825" height="862" alt="" fetchpriority="high" decoding="async">
             </div>
-
-            <div class="pricing-grid">
-                <!-- Essential Plan -->
-                <div class="pricing-card featured" data-plan="essential">
-                    <div class="featured-badge">Khuyên Dùng</div>
-                    <div class="card-header">
-                        <h3 class="plan-name">Essential</h3>
-                        <div class="plan-badge">Tốt nhất</div>
+            <div class="container hero-inner">
+                <div class="hero-text-content">
+                    <h1 id="hero-title">TradingView Premium</h1>
+                    <div class="hero-offer">
+                        <span class="offer-label" data-i18n="hero_save">Tiết kiệm đến</span>
+                        <span class="offer-value">70<span>%</span></span>
                     </div>
-
-                    <div class="price-comparison">
-                        <div class="official-price">
-                            <span class="price-label">Giá TradingView:</span>
-                            <div class="price-value strikethrough">
-                                <span class="currency">$</span>18.65<span class="period">/tháng</span>
-                            </div>
-                            <div class="price-vnd">≈ 466,000 VNĐ/tháng</div>
-                            <div class="price-yearly">Gói năm: $223.74 (≈ 5,593,500 VNĐ)</div>
-                        </div>
-
-                        <div class="our-price">
-                            <span class="price-label">Giá TradingView.vn:</span>
-                            <div class="price-value highlight">
-                                <span class="currency">3.3</span><span class="million">triệu</span><span
-                                    class="period">/năm</span>
-                            </div>
-                            <div class="savings">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M8 0L10.5 5.5L16 6.5L12 10.5L13 16L8 13L3 16L4 10.5L0 6.5L5.5 5.5L8 0Z" />
-                                </svg>
-                                Tiết kiệm 2,293,500 VNĐ (41%)
-                            </div>
-                        </div>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">Nâng cấp tài khoản chính hãng. Kích hoạt nhanh, bảo hành suốt thời gian sử dụng.</p>
+                    <div class="hero-cta">
+                        <a href="#pricing" class="btn btn-gold"><span data-i18n="hero_btn_pricing">Xem bảng giá</span><span class="button-arrow icon icon-arrow" aria-hidden="true"></span></a>
+                        <a href="#contact" class="btn btn-outline" data-i18n="hero_btn_contact">Liên hệ ngay</a>
                     </div>
-
-                    <div class="features">
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>2 biểu đồ / tab</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>5 chỉ báo / biểu đồ</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>20 cảnh báo giá</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>Không quảng cáo</span>
-                        </div>
-                    </div>
-
-                    <a href="#contact" class="btn btn-card">Liên Hệ Để Mua</a>
                 </div>
+            </div>
+        </section>
 
-                <!-- Plus Plan -->
-                <div class="pricing-card" data-plan="plus">
-                    <div class="card-header">
-                        <h3 class="plan-name">Plus</h3>
-                        <div class="plan-badge">Phổ biến</div>
-                    </div>
-
-                    <div class="price-comparison">
-                        <div class="official-price">
-                            <span class="price-label">Giá TradingView:</span>
-                            <div class="price-value strikethrough">
-                                <span class="currency">$</span>37.35<span class="period">/tháng</span>
-                            </div>
-                            <div class="price-vnd">≈ 934,000 VNĐ/tháng</div>
-                            <div class="price-yearly">Gói năm: $448.14 (≈ 11,203,500 VNĐ)</div>
-                        </div>
-
-                        <div class="our-price">
-                            <span class="price-label">Giá TradingView.vn:</span>
-                            <div class="price-value highlight">
-                                <span class="currency">6.3</span><span class="million">triệu</span><span
-                                    class="period">/năm</span>
-                            </div>
-                            <div class="savings">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M8 0L10.5 5.5L16 6.5L12 10.5L13 16L8 13L3 16L4 10.5L0 6.5L5.5 5.5L8 0Z" />
-                                </svg>
-                                Tiết kiệm 4,903,500 VNĐ (44%)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="features">
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>4 biểu đồ / tab</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>10 chỉ báo / biểu đồ</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>100 cảnh báo giá</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>Xuất dữ liệu biểu đồ</span>
-                        </div>
-                    </div>
-
-                    <a href="#contact" class="btn btn-card">Liên Hệ Để Mua</a>
-                </div>
-
-                <!-- Premium Plan -->
-                <div class="pricing-card" data-plan="premium">
-                    <div class="card-header">
-                        <h3 class="plan-name">Premium</h3>
-                        <div class="plan-badge special">Ưu đãi T11</div>
-                    </div>
-
-                    <div class="price-comparison">
-                        <div class="official-price">
-                            <span class="price-label">Giá TradingView:</span>
-                            <div class="price-value strikethrough">
-                                <span class="currency">$</span>74.75<span class="period">/tháng</span>
-                            </div>
-                            <div class="price-vnd">≈ 1,869,000 VNĐ/tháng</div>
-                            <div class="price-yearly">Gói năm: $896.94 (≈ 22,423,500 VNĐ)</div>
-                        </div>
-
-                        <div class="our-price">
-                            <span class="price-label">Giá TradingView.vn:</span>
-                            <div class="price-value highlight">
-                                <span class="currency">9.3</span><span class="million">triệu</span><span
-                                    class="period">/năm</span>
-                            </div>
-                            <div class="price-note">Giá tháng 11: 9.3tr (Giá gốc: 10.3tr)</div>
-                            <div class="savings">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M8 0L10.5 5.5L16 6.5L12 10.5L13 16L8 13L3 16L4 10.5L0 6.5L5.5 5.5L8 0Z" />
-                                </svg>
-                                Tiết kiệm 13,123,500 VNĐ (59%)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="features">
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>8 biểu đồ / tab</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>25 chỉ báo / biểu đồ</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>400 cảnh báo giá</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="10" fill="#00E676" opacity="0.2" />
-                                <path d="M6 10L9 13L14 7" stroke="#00E676" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                            <span>Cảnh báo không hết hạn</span>
-                        </div>
-                    </div>
-
-                    <a href="#contact" class="btn btn-card">Liên Hệ Để Được Giá Tốt</a>
-                </div>
+        <div class="container stats-wrap">
+            <div class="stats-banner" role="list">
+                <div class="stat-item" role="listitem"><span class="icon icon-users" aria-hidden="true"></span><div><p class="stat-label" data-i18n="stat_clients">Khách hàng tin dùng</p><p class="stat-number">1.000+</p></div></div>
+                <div class="stat-item" role="listitem"><span class="icon icon-headset" aria-hidden="true"></span><div><p class="stat-label" data-i18n="stat_support">Hỗ trợ mỗi ngày</p><p class="stat-number">9h - 23h</p></div></div>
+                <div class="stat-item" role="listitem"><span class="icon icon-stack" aria-hidden="true"></span><div><p class="stat-label" data-i18n="stat_plans">Lựa chọn phù hợp</p><p class="stat-number"><span>3</span> <span data-i18n="plan_unit">gói</span></p></div></div>
             </div>
         </div>
-    </section>
 
-    <!-- Gifts Section -->
-    <section id="gifts" class="gifts-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="badge">Đặc Quyền Độc Quyền</div>
-                <h2 class="section-title">Quà Tặng & Dịch Vụ Đi Kèm Lên Đến 5 Triệu</h2>
-                <p class="section-subtitle">Đặc quyền hoàn toàn miễn phí dành riêng cho khách hàng mua tài khoản tại TradingView.vn</p>
-            </div>
-
-            <div class="gifts-grid">
-                <!-- Gift 1: Google AI Pro -->
-                <div class="gift-card featured-gift">
-                    <div class="gift-badge">Hot nhất</div>
-                    <div class="gift-icon-wrapper">
-                        <svg class="gift-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                    </div>
-                    <div class="gift-content">
-                        <h3 class="gift-title">Google AI Pro (Trị giá 5.000.000đ)</h3>
-                        <p class="gift-description">Trải nghiệm phiên bản AI mạnh nhất từ Google giúp tóm tắt phân tích xu hướng thị trường, dịch thuật, soạn thảo và tối ưu hóa công việc hàng ngày của trader chuyên nghiệp.</p>
-                    </div>
+        <section id="pricing" class="pricing-section section" aria-labelledby="pricing-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="pricing-title" data-i18n="pricing_title">Chọn gói TradingView của bạn</h2>
+                    <p data-i18n="pricing_subtitle">Chi phí rõ ràng. Hỗ trợ xuyên suốt thời gian sử dụng.</p>
                 </div>
-
-                <!-- Gift 2: NotebookLM Pro -->
-                <div class="gift-card">
-                    <div class="gift-icon-wrapper">
-                        <svg class="gift-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-                            <path d="M6 6h10M6 10h10"/>
-                        </svg>
-                    </div>
-                    <div class="gift-content">
-                        <h3 class="gift-title">NotebookLM Pro</h3>
-                        <p class="gift-description">Công cụ trợ lý nghiên cứu tài liệu từ Google. Tải lên tệp PDF, báo cáo tài chính và nghe AI tự động tạo podcast thảo luận chuyên sâu.</p>
-                    </div>
+                <div class="pricing-grid">
+                    <article class="pricing-card" data-plan="essential" aria-labelledby="essential-title">
+                        <div class="card-header"><h3 id="essential-title">Essential</h3></div>
+                        <div class="plan-price">
+                            <div class="reference-price"><span data-i18n="reference_price_label">Giá TradingView / năm</span><del data-i18n="essential_reference_price">≈ 5.593.500₫</del></div>
+                            <p class="our-price-label" data-i18n="our_price_label">Tại TradingView.vn</p>
+                            <div class="price-value" data-i18n-html="essential_our_val"><span class="amount">3,3 triệu</span><span class="period">/năm</span></div>
+                            <p class="plan-savings"><span><span data-i18n="save_label">Tiết kiệm</span> <strong data-i18n="essential_saved_amount">2.293.500₫</strong></span><span class="savings-percent" data-i18n="essential_saved_percent">41%</span></p>
+                        </div>
+                        <ul class="features">
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="essential_feat_1">2 biểu đồ / tab</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="essential_feat_2">5 chỉ báo / biểu đồ</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="essential_feat_3">20 cảnh báo giá</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="essential_feat_4">Không quảng cáo</span></li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline btn-card" data-plan-choice="Essential" data-i18n="choose_essential">Chọn Essential</a>
+                    </article>
+                    <article class="pricing-card" data-plan="plus" aria-labelledby="plus-title">
+                        <div class="card-header"><h3 id="plus-title">Plus</h3></div>
+                        <div class="plan-price">
+                            <div class="reference-price"><span data-i18n="reference_price_label">Giá TradingView / năm</span><del data-i18n="plus_reference_price">≈ 11.203.500₫</del></div>
+                            <p class="our-price-label" data-i18n="our_price_label">Tại TradingView.vn</p>
+                            <div class="price-value" data-i18n-html="plus_our_val"><span class="amount">6,3 triệu</span><span class="period">/năm</span></div>
+                            <p class="plan-savings"><span><span data-i18n="save_label">Tiết kiệm</span> <strong data-i18n="plus_saved_amount">4.903.500₫</strong></span><span class="savings-percent" data-i18n="plus_saved_percent">44%</span></p>
+                        </div>
+                        <ul class="features">
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="plus_feat_1">4 biểu đồ / tab</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="plus_feat_2">10 chỉ báo / biểu đồ</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="plus_feat_3">100 cảnh báo giá</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="plus_feat_4">Xuất dữ liệu biểu đồ</span></li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline btn-card" data-plan-choice="Plus" data-i18n="choose_plus">Chọn Plus</a>
+                    </article>
+                    <article class="pricing-card featured" data-plan="premium" aria-labelledby="premium-title">
+                        <div class="card-header"><h3 id="premium-title">Premium</h3><span class="plan-badge" data-i18n="plan_offer">Ưu đãi tháng 11</span></div>
+                        <div class="plan-price">
+                            <div class="reference-price"><span data-i18n="reference_price_label">Giá TradingView / năm</span><del data-i18n="premium_reference_price">≈ 22.423.500₫</del></div>
+                            <p class="our-price-label" data-i18n="our_price_label">Tại TradingView.vn</p>
+                            <div class="price-value" data-i18n-html="premium_our_val"><span class="amount">6,3 triệu</span><span class="period">/năm</span></div>
+                            <p class="plan-savings"><span><span data-i18n="save_label">Tiết kiệm</span> <strong data-i18n="premium_saved_amount">16.123.500₫</strong></span><span class="savings-percent" data-i18n="premium_saved_percent">72%</span></p>
+                            <p class="offer-context"><span data-i18n="premium_regular_label">Giá thường</span> <del data-i18n="premium_regular_price">10,3 triệu/năm</del></p>
+                        </div>
+                        <ul class="features">
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="premium_feat_1">8 biểu đồ / tab</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="premium_feat_2">25 chỉ báo / biểu đồ</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="premium_feat_3">400 cảnh báo giá</span></li>
+                            <li><span class="feature-check icon icon-check" aria-hidden="true"></span><span data-i18n="premium_feat_4">Cảnh báo không hết hạn</span></li>
+                        </ul>
+                        <a href="#contact" class="btn btn-gold btn-card" data-plan-choice="Premium" data-i18n="choose_premium">Chọn Premium</a>
+                    </article>
                 </div>
+                <details class="price-details">
+                    <summary><span data-i18n="compare_prices">Xem so sánh giá với TradingView</span><span class="icon icon-caret" aria-hidden="true"></span></summary>
+                    <div class="comparison-grid">
+                        <div><h3>Essential</h3><p data-i18n="essential_official_yearly">Gói năm: $223.74 (≈ 5,593,500 VNĐ)</p><p class="comparison-savings" data-i18n="essential_savings">Tiết kiệm 2,293,500 VNĐ (41%)</p></div>
+                        <div><h3>Plus</h3><p data-i18n="plus_official_yearly">Gói năm: $448.14 (≈ 11,203,500 VNĐ)</p><p class="comparison-savings" data-i18n="plus_savings">Tiết kiệm 4,903,500 VNĐ (44%)</p></div>
+                        <div><h3>Premium</h3><p data-i18n="premium_official_yearly">Gói năm: $896.94 (≈ 22,423,500 VNĐ)</p><p class="comparison-savings" data-i18n="premium_savings">Tiết kiệm 16,123,500 VNĐ (72%)</p></div>
+                    </div>
+                </details>
+            </div>
+        </section>
 
-                <!-- Gift 3: Bảo mật máy tính -->
-                <div class="gift-card">
-                    <div class="gift-icon-wrapper">
-                        <svg class="gift-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                    </div>
-                    <div class="gift-content">
-                        <h3 class="gift-title">Hỗ Trợ Bảo Mật & Cài Đặt</h3>
-                        <p class="gift-description">Hỗ trợ rà soát, tư vấn cấu hình an toàn hệ điều hành máy tính để tránh rò rỉ thông tin cá nhân và bị hack tài khoản giao dịch.</p>
-                    </div>
+        <section id="gifts" class="gifts-section section" aria-labelledby="gifts-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="gifts-title" data-i18n="gifts_title">Thêm đặc quyền, thêm giá trị</h2>
+                    <p data-i18n="gifts_subtitle">Quà tặng & dịch vụ đi kèm lên đến 5 triệu</p>
                 </div>
-
-                <!-- Gift 4: Dọn rác máy tính -->
-                <div class="gift-card">
-                    <div class="gift-icon-wrapper">
-                        <svg class="gift-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"/>
-                        </svg>
-                    </div>
-                    <div class="gift-content">
-                        <h3 class="gift-title">Dọn Dẹp & Tối Ưu Máy Tính</h3>
-                        <p class="gift-description">Làm sạch các tệp tin tạm, dọn rác bộ nhớ, tối ưu hóa hệ thống giúp trình duyệt load mượt mà các biểu đồ TradingView đa khung thời gian.</p>
-                    </div>
-                </div>
-
-                <!-- Gift 5: Tư vấn công nghệ & AI -->
-                <div class="gift-card">
-                    <div class="gift-icon-wrapper">
-                        <svg class="gift-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
-                        </svg>
-                    </div>
-                    <div class="gift-content">
-                        <h3 class="gift-title">Tư Vấn Công Nghệ & AI</h3>
-                        <p class="gift-description">Đồng hành chia sẻ kinh nghiệm chọn thiết bị, ứng dụng các mô hình AI mới nhất vào phân tích kỹ thuật và tối ưu công việc của bạn.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="blog-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="badge">Kiến Thức Trading</div>
-                <h2 class="section-title">Cẩm Nang TradingView</h2>
-                <p class="section-subtitle">Chia sẻ kinh nghiệm sử dụng công cụ và phân tích thị trường</p>
-            </div>
-
-            <div class="blog-grid">
-                <!-- Article 1 -->
-                <article class="blog-card">
-                    <a href="blog/top-5-indicators.html" class="blog-image-link">
-                        <div class="blog-image">
-                            <img src="assets/images/blog_indicators.png" alt="Top 5 TradingView Indicators" />
-                            <div class="blog-tag">Công cụ</div>
-                        </div>
-                    </a>
-                    <div class="blog-body">
-                        <div class="blog-meta">
-                            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z">
-                                    </path>
-                                    <polyline points="16 2 16 6"></polyline>
-                                    <polyline points="8 2 8 6"></polyline>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg> 22 Th2, 2026</span>
-                            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg> 5 phút đọc</span>
-                        </div>
-                        <h3 class="blog-title"><a href="blog/top-5-indicators.html">Top 5 Chỉ Báo TradingView Hiệu Quả
-                                Nhất Năm 2026</a></h3>
-                        <p class="blog-excerpt">Tổng hợp các chỉ báo kỹ thuật được tin dùng nhất bởi các trader chuyên
-                            nghiệp để tối ưu hóa điểm vào lệnh...</p>
-                        <a href="blog/top-5-indicators.html" class="blog-link">Đọc thêm
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Article 2 -->
-                <article class="blog-card">
-                    <a href="blog/so-sanh-cac-goi-tradingview.html" class="blog-image-link">
-                        <div class="blog-image">
-                            <img src="assets/images/blog_3_plans.png" alt="TradingView Account Comparison" />
-                            <div class="blog-tag">Hướng dẫn</div>
-                        </div>
-                    </a>
-                    <div class="blog-body">
-                        <div class="blog-meta">
-                            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z">
-                                    </path>
-                                    <polyline points="16 2 16 6"></polyline>
-                                    <polyline points="8 2 8 6"></polyline>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg> 22 Th2, 2026</span>
-                            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg> 10 phút đọc</span>
-                        </div>
-                        <h3 class="blog-title"><a href="blog/so-sanh-cac-goi-tradingview.html">So Sánh 3 Cấp Độ Tài
-                                Khoản TradingView Thổ Phổ Biến Nhất</a></h3>
-                        <p class="blog-excerpt">Phân tích chi tiết giúp bạn lựa chọn giữa Essential, Plus và Premium.
-                            Gói nào thực sự phù hợp với bạn?</p>
-                        <a href="blog/so-sanh-cac-goi-tradingview.html" class="blog-link">Đọc thêm
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Article 3 -->
-                <article class="blog-card">
-                    <a href="blog/alerts-guide.html" class="blog-image-link">
-                        <div class="blog-image">
-                            <img src="assets/images/blog_alerts.png" alt="TradingView Alerts" />
-                            <div class="blog-tag">Mẹo vặt</div>
-                        </div>
-                    </a>
-                    <div class="blog-body">
-                        <div class="blog-meta">
-                            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z">
-                                    </path>
-                                    <polyline points="16 2 16 6"></polyline>
-                                    <polyline points="8 2 8 6"></polyline>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg> 18 Th2, 2026</span>
-                            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg> 4 phút đọc</span>
-                        </div>
-                        <h3 class="blog-title"><a href="blog/alerts-guide.html">Cách Thiết Lập Cảnh Báo "Không Hết Hạn"
-                                Trên Premium</a></h3>
-                        <p class="blog-excerpt">Tối ưu hóa khả năng giám sát thị trường 24/7 mà không lo bỏ lỡ bất kỳ cơ
-                            hội nào với tính năng cảnh báo...</p>
-                        <a href="blog/alerts-guide.html" class="blog-link">Đọc thêm
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
-
-            <div class="blog-footer">
-                <a href="#" class="btn btn-secondary">Xem Tất Cả Bài Viết</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2 class="contact-title">Liên Hệ Ngay Để Nhận Ưu Đãi</h2>
-                    <p class="contact-description">
-                        Chúng tôi cam kết mang đến dịch vụ tốt nhất với giá cả cạnh tranh nhất thị trường.
-                        Hỗ trợ tư vấn từ 9h đến 23h hàng ngày, kích hoạt nhanh chóng trong vòng 24h.
-                    </p>
-
-                    <div class="contact-methods">
-                        <a href="https://zalo.me/0986595475" class="contact-card zalo" target="_blank">
-                            <div class="contact-icon">
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                    <circle cx="16" cy="16" r="16" fill="white" />
-                                    <path
-                                        d="M16 6C10.48 6 6 10.02 6 14.9C6 17.49 7.24 19.79 9.24 21.39L8.5 25.5L12.89 23.71C13.91 23.89 14.95 24 16 24C21.52 24 26 19.98 26 15.1C26 10.22 21.52 6 16 6Z"
-                                        fill="#0068FF" />
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">Zalo</div>
-                                <div class="contact-value">0986595475</div>
-                            </div>
-                        </a>
-
-                        <a href="https://t.me/dinhtienvu" class="contact-card telegram" target="_blank">
-                            <div class="contact-icon">
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                    <circle cx="16" cy="16" r="16" fill="#0088cc" />
-                                    <path
-                                        d="M22.987 10.209c.14-.46-.318-.85-.736-.625l-16.03 8.588a.5.5 0 00.034.916l4.316 1.446 10.02-6.321c.195-.123.402.15.233.307l-8.094 7.528a.5.5 0 00-.014.698l1.657 1.822a.5.5 0 00.82-.067l2.353-3.765 3.729 2.512a.5.5 0 00.774-.347l1.938-12.692z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">Telegram</div>
-                                <div class="contact-value">@dinhtienvu</div>
-                            </div>
-                        </a>
-
-                        <div class="contact-card usdt-payment">
-                            <div class="contact-icon">
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                    <circle cx="16" cy="16" r="16" fill="#26A17B" />
-                                    <path d="M9 12h14M16 8v16M12 15h8M14 18h4" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label" data-i18n-usdt-label>Hỗ trợ thanh toán qua USDT</div>
-                                <div class="contact-value" data-i18n-usdt-value>Mạng lưới TRC20 / ERC20</div>
-                            </div>
+                <div class="gifts-grid">
+                    <div class="ai-gifts">
+                        <img class="ai-orb" src="assets/images/ai-orb.webp" alt="" width="720" height="480" loading="lazy" decoding="async">
+                        <div class="ai-products">
+                            <details class="gift-detail"><summary><span class="product-symbol google-symbol"><span class="icon icon-google" aria-hidden="true"></span></span><h3>Google AI Pro</h3><span class="icon icon-caret" aria-hidden="true"></span></summary><p data-i18n="gift_1_desc">Trải nghiệm phiên bản AI mạnh nhất từ Google giúp tóm tắt phân tích xu hướng thị trường, dịch thuật, soạn thảo và tối ưu hóa công việc hàng ngày của trader chuyên nghiệp.</p></details>
+                            <details class="gift-detail"><summary><span class="product-symbol"><span class="icon icon-notebook" aria-hidden="true"></span></span><h3>NotebookLM Pro</h3><span class="icon icon-caret" aria-hidden="true"></span></summary><p data-i18n="gift_2_desc">Công cụ trợ lý nghiên cứu tài liệu từ Google. Tải lên tệp PDF, báo cáo tài chính và nghe AI tự động tạo podcast thảo luận chuyên sâu.</p></details>
                         </div>
                     </div>
-
-                    <div class="trust-badges">
-                        <div class="trust-item">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                                    fill="#FFD700" />
-                            </svg>
-                            <span>Uy tín</span>
-                        </div>
-                        <div class="trust-item">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z"
-                                    fill="#00E676" />
-                            </svg>
-                            <span>Bảo mật</span>
-                        </div>
-                        <div class="trust-item">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M13 2.05V4.05C17.39 4.59 20.5 8.58 19.96 12.97C19.5 16.61 16.64 19.5 13 19.93V21.93C18.5 21.38 22.5 16.5 21.95 11C21.5 6.25 17.73 2.5 13 2.05ZM11 2.05C9.04 2.25 7.19 3.04 5.67 4.26L7.1 5.69C8.22 4.84 9.57 4.26 11 4.06V2.05ZM4.26 5.67C3.03 7.19 2.25 9.04 2.05 11H4.05C4.24 9.58 4.8 8.23 5.64 7.1L4.26 5.67ZM2.06 13C2.26 14.96 3.03 16.81 4.27 18.33L5.69 16.9C4.81 15.77 4.24 14.42 4.06 13H2.06ZM7.1 18.37L5.67 19.74C7.18 20.97 9.03 21.74 11 21.95V19.95C9.58 19.76 8.23 19.2 7.1 18.37ZM12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.69 15.31 6 12 6ZM12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16Z"
-                                    fill="#059669" />
-                            </svg>
-                            <span>Hỗ trợ 9h-23h</span>
-                        </div>
+                    <div class="service-gifts">
+                        <details class="gift-detail"><summary><span class="icon icon-shield service-icon" aria-hidden="true"></span><h3 data-i18n="gift_3_title">Hỗ trợ bảo mật & cài đặt</h3><span class="icon icon-caret" aria-hidden="true"></span></summary><p data-i18n="gift_3_desc">Hỗ trợ rà soát, tư vấn cấu hình an toàn hệ điều hành máy tính để tránh rò rỉ thông tin cá nhân và bị hack tài khoản giao dịch.</p></details>
+                        <details class="gift-detail"><summary><span class="icon icon-laptop service-icon" aria-hidden="true"></span><h3 data-i18n="gift_4_title">Dọn dẹp & tối ưu máy tính</h3><span class="icon icon-caret" aria-hidden="true"></span></summary><p data-i18n="gift_4_desc">Làm sạch các tệp tin tạm, dọn rác bộ nhớ, tối ưu hóa hệ thống giúp trình duyệt load mượt mà các biểu đồ TradingView đa khung thời gian.</p></details>
+                        <details class="gift-detail"><summary><span class="icon icon-chat service-icon" aria-hidden="true"></span><h3 data-i18n="gift_5_title">Tư vấn công nghệ & AI</h3><span class="icon icon-caret" aria-hidden="true"></span></summary><p data-i18n="gift_5_desc">Đồng hành chia sẻ kinh nghiệm chọn thiết bị, ứng dụng các mô hình AI mới nhất vào phân tích kỹ thuật và tối ưu công việc của bạn.</p></details>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                        <rect width="32" height="32" rx="6" fill="url(#footerLogoGradient)" />
-                        <path d="M8 24V8H12V20H20V24H8Z" fill="white" />
-                        <path d="M16 8H20V16H24V20H16V8Z" fill="white" />
-                        <defs>
-                            <linearGradient id="footerLogoGradient" x1="4" y1="4" x2="28" y2="28">
-                                <stop offset="0%" stop-color="#059669" />
-                                <stop offset="100%" stop-color="#0284C7" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <span>TradingView.vn</span>
+        <section id="blog" class="blog-section section" aria-labelledby="blog-title">
+            <div class="container">
+                <h2 id="blog-title" data-i18n="blog_title">Cẩm nang TradingView</h2>
+                <div class="blog-row">
+                    <a class="article-teaser" href="blog/top-5-indicators.html"><img src="assets/images/blog_indicators.webp" width="320" height="320" alt="Biểu đồ với các chỉ báo kỹ thuật" loading="lazy" decoding="async"><h3 data-i18n="blog_short_1">5 chỉ báo TradingView hiệu quả</h3><span class="teaser-arrow icon icon-arrow" aria-hidden="true"></span></a>
+                    <a class="article-teaser" href="blog/so-sanh-cac-goi-tradingview.html"><img src="assets/images/blog_3_plans.webp" width="320" height="320" alt="So sánh các gói tài khoản TradingView" loading="lazy" decoding="async"><h3 data-i18n="blog_short_2">Chọn gói tài khoản phù hợp</h3><span class="teaser-arrow icon icon-arrow" aria-hidden="true"></span></a>
+                    <button class="all-articles" type="button" aria-expanded="false" aria-controls="more-articles"><span data-i18n="blog_btn_all">Xem tất cả bài viết</span><span class="icon icon-arrow" aria-hidden="true"></span></button>
                 </div>
-                <p class="footer-text">© 2025 TradingViewVN — Đối tác chính thức của TradingView.</p>
+                <div id="more-articles" class="more-articles" hidden>
+                    <a href="blog/alerts-guide.html"><span data-i18n="blog_art_3_title">Cách thiết lập cảnh báo không hết hạn</span><span class="icon icon-arrow" aria-hidden="true"></span></a>
+                    <a href="blog/plus-vs-premium.html"><span data-i18n="blog_more_4">So sánh TradingView Plus và Premium</span><span class="icon icon-arrow" aria-hidden="true"></span></a>
+                    <a href="blog/cach-dang-ky-dung-thu-tradingview-mien-phi-30-ngay.html"><span data-i18n="blog_more_5">Đăng ký dùng thử TradingView 30 ngày</span><span class="icon icon-arrow" aria-hidden="true"></span></a>
+                    <a href="blog/huong-dan-thanh-toan-va-mua-chung-tradingview-gia-re.html"><span data-i18n="blog_more_6">Hướng dẫn thanh toán và mua tài khoản</span><span class="icon icon-arrow" aria-hidden="true"></span></a>
+                    <a href="blog/bi-quyet-toi-uu-hoa-bieu-do-tren-tradingview-cho-trader.html"><span data-i18n="blog_more_7">Bí quyết tối ưu hóa biểu đồ TradingView</span><span class="icon icon-arrow" aria-hidden="true"></span></a>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section id="contact" class="contact-section container" aria-labelledby="contact-title">
+            <div class="contact-panel">
+                <div class="contact-heading"><h2 id="contact-title" data-i18n="contact_title">Sẵn sàng nâng cấp TradingView?</h2><p data-i18n="contact_desc">Tư vấn từ 9h đến 23h mỗi ngày.</p></div>
+                <div class="contact-actions">
+                    <a href="https://zalo.me/0986595475" class="contact-card zalo" target="_blank" rel="noopener noreferrer"><span class="zalo-symbol" aria-hidden="true">Zalo</span><span>Zalo: 0986595475</span><span class="sr-only" data-i18n="opens_new_tab">(mở tab mới)</span></a>
+                    <a href="https://t.me/dinhtienvu" class="contact-card telegram" target="_blank" rel="noopener noreferrer"><span class="telegram-symbol"><span class="icon icon-telegram" aria-hidden="true"></span></span><span>Telegram: @dinhtienvu</span><span class="sr-only" data-i18n="opens_new_tab">(mở tab mới)</span></a>
+                </div>
+            </div>
+            <p class="payment-note"><span class="icon icon-shield" aria-hidden="true"></span><span data-i18n="contact_usdt_label">Hỗ trợ thanh toán qua USDT</span><span class="payment-network" data-i18n="contact_usdt_value">Mạng lưới TRC20 / ERC20</span></p>
+        </section>
+    </main>
+
+    <footer class="footer container">
+        <div class="footer-main"><a class="logo footer-logo" href="./"><img class="brand-lockup" src="assets/icons/logo.svg?v=20261124-brand1" width="384" height="64" alt="TradingView.vn"></a><p data-i18n="footer_tagline">Biểu đồ mạnh mẽ. Giao dịch chủ động.</p><a class="affiliate-link" href="https://vn.tradingview.com/?aff_id=122256" target="_blank" rel="sponsored noopener noreferrer">TradingView<span class="icon icon-external" aria-hidden="true"></span><span class="sr-only" data-i18n="opens_new_tab">(mở tab mới)</span></a></div>
+        <p class="footer-text" data-i18n="footer_text">© 2025 TradingViewVN — Đối tác chính thức của TradingView.</p>
     </footer>
 
-    <script src="assets/js/translations.js"></script>
-    <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/script.js?v=20260221202930"></script>
+    <script src="assets/js/translations.js?v=20261124213243" defer></script>
+    <script src="assets/js/i18n.js?v=20261124213243" defer></script>
+    <script src="assets/js/homepage.js?v=20261124213243" defer></script>
 </body>
-
 </html>

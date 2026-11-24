@@ -1,5 +1,1 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#2962FF"/>
-    <path d="M8 24V8H12V20H20V24H8Z" fill="white"/>
-    <path d="M16 8H20V16H24V20H16V8Z" fill="white"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><!-- Chart silhouette: Phosphor Icons, MIT (ui/LICENSE). Letterforms: Outfit, SIL OFL (../fonts/OFL-Outfit.txt). --><defs><linearGradient id="brand-blue" x1="4" y1="1" x2="58" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#159AFF"/><stop offset=".46" stop-color="#0868F8"/><stop offset="1" stop-color="#0444D7"/></linearGradient></defs><rect x=".75" y=".75" width="62.5" height="62.5" rx="18" fill="url(#brand-blue)"/><rect x="1.5" y="1.5" width="61" height="61" rx="17.25" fill="none" stroke="#FFFFFF" stroke-opacity=".22"/><g transform="translate(6.4 7.2) scale(.2)" fill="#FFFFFF"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1,0-16h8V136a8,8,0,0,1,8-8H72a8,8,0,0,1,8,8v64H96V88a8,8,0,0,1,8-8h32a8,8,0,0,1,8,8V200h16V40a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V200h8A8,8,0,0,1,232,208Z"/></g></svg>

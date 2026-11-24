@@ -9,12 +9,19 @@ VERSION=$(date +%Y%m%d%H%M%S)
 
 echo "Updating version to: $VERSION"
 
-# Update CSS version
-sed -i '' "s|assets/css/styles\\.css?v=[0-9]*|assets/css/styles.css?v=$VERSION|g" index.html
+# Update every versioned homepage stylesheet and script, including translations.
+python3 - "$VERSION" <<'PY'
+import re
+import sys
+from pathlib import Path
 
-# Update JS version
-sed -i '' "s|assets/js/script\\.js?v=[0-9]*|assets/js/script.js?v=$VERSION|g" index.html
+page = Path('index.html')
+page.write_text(re.sub(
+    r'(assets/(?:css|js)/[\w.-]+\.(?:css|js)\?v=)\d+',
+    lambda match: match[1] + sys.argv[1],
+    page.read_text(),
+))
+PY
 
 echo "✅ Version updated successfully!"
-echo "CSS: assets/css/styles.css?v=$VERSION"
-echo "JS: assets/js/script.js?v=$VERSION"
+echo "All homepage CSS and JS assets now use version $VERSION"
