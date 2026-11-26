@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lập Trình Pine Script Cơ Bản Trên TradingView (v5/v6) | TradingView.vn</title>
+    <meta name="description"
+        content="Hướng dẫn lập trình Pine Script cơ bản trên TradingView: cấu trúc code, tự viết chỉ báo giao cắt EMA, tạo chiến lược backtest tự động và gắn cảnh báo alert().">
+    <link rel="canonical" href="https://tradingview.vn/blog/lap-trinh-pine-script-co-ban-tradingview.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="TradingView.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://tradingview.vn/blog/lap-trinh-pine-script-co-ban-tradingview.html">
+    <meta property="og:title" content="Lập Trình Pine Script Cơ Bản Trên TradingView: Tự Viết Chỉ Báo & Chiến Lược">
+    <meta property="og:description"
+        content="Bắt đầu viết code Pine Script trên TradingView trong 15 phút kèm mã nguồn mẫu chỉ báo EMA + RSI và chiến lược backtest tự động.">
+    <meta property="og:image" content="https://tradingview.vn/assets/images/blog_indicators.webp">
+    <meta property="article:published_time" content="2026-11-26">
+    <meta property="article:modified_time" content="2026-11-26">
+    <meta property="article:section" content="Pine Script & Tự động hóa">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lập Trình Pine Script Cơ Bản Trên TradingView">
+    <meta name="twitter:description"
+        content="Hướng dẫn từng bước viết chỉ báo và chiến lược backtest bằng Pine Script trên TradingView.">
+    <meta name="twitter:image" content="https://tradingview.vn/assets/images/blog_indicators.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css?v=20261126-seo1">
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/favicon.png?v=20261124-brand1">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Lập Trình Pine Script Cơ Bản Trên TradingView: Tự Viết Chỉ Báo & Chiến Lược",
+                "description": "Hướng dẫn lập trình Pine Script cơ bản trên TradingView: cấu trúc code, tự viết chỉ báo giao cắt EMA, tạo chiến lược backtest tự động và gắn cảnh báo.",
+                "image": "https://tradingview.vn/assets/images/blog_indicators.webp",
+                "datePublished": "2026-11-26",
+                "dateModified": "2026-11-26",
+                "inLanguage": "vi",
+                "author": { "@type": "Organization", "name": "TradingView.vn", "url": "https://tradingview.vn/" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TradingView.vn",
+                    "logo": { "@type": "ImageObject", "url": "https://tradingview.vn/assets/icons/favicon.png" }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://tradingview.vn/blog/lap-trinh-pine-script-co-ban-tradingview.html"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://tradingview.vn/" },
+                    { "@type": "ListItem", "position": 2, "name": "Cẩm nang", "item": "https://tradingview.vn/#blog" },
+                    { "@type": "ListItem", "position": 3, "name": "Lập trình Pine Script cơ bản" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Không biết lập trình có học Pine Script được không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Hoàn toàn được. Pine Script có cú pháp rất ngắn gọn, chỉ cần 10-20 dòng code là có thể tạo một chỉ báo hoặc chiến lược hoàn chỉnh, đặc biệt dễ học khi kết hợp đọc mã nguồn mở trong thư viện Community Scripts."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Gộp nhiều chỉ báo vào 1 script Pine Script có giúp vượt giới hạn chỉ báo không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Có. Một script Pine Script có thể vẽ cùng lúc nhiều đường EMA, Bollinger Bands và tín hiệu RSI nhưng chỉ tính là 1 chỉ báo duy nhất trên biểu đồ."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Làm sao tránh lỗi Repaint (vẽ lại tín hiệu quá khứ) trong Pine Script?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Hãy luôn kiểm tra điều kiện khi nến đã đóng bằng biến barstate.isconfirmed và khi dùng hàm request.security() cho khung lớn hơn, bắt buộc thêm tham số lookahead = barmerge.lookahead_off."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                    alt="TradingView.vn">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Pine Script</span>
+            </div>
+            <h1 class="article-hero-title">Lập Trình Pine Script Cơ Bản Trên TradingView: Tự Viết Chỉ Báo &amp; Chiến Lược</h1>
+            <div class="article-meta">
+                <span>📅 26 Tháng 11, 2026</span>
+                <span>⏱️ 10 phút đọc</span>
+                <span>✍️ Đội ngũ TradingView.vn</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/blog_indicators.webp" width="320" height="320"
+                alt="Viết chỉ báo và chiến lược giao dịch bằng Pine Script trên TradingView"
+                class="article-featured-image" loading="eager">
+
+            <div class="article-body">
+                <div class="tldr-box">
+                    <strong class="tldr-title">Tóm tắt nhanh (Key Takeaways)</strong>
+                    <p><strong>Pine Script</strong> là ngôn ngữ lập trình độc quyền của TradingView giúp trader tự tạo chỉ báo kỹ thuật (<code>indicator</code>), kiểm thử chiến lược tự động trên hàng chục nghìn cây nến (<code>strategy</code>) và bắn tín hiệu Webhook sang bot giao dịch. Chỉ với 15 dòng code trong <strong>Pine Editor</strong>, bạn đã có thể gộp nhiều chỉ báo và backtest hệ thống trong vài giây.</p>
+                </div>
+
+                <details class="article-toc" open>
+                    <summary>Mục lục bài viết</summary>
+                    <ol>
+                        <li><a href="#pine-script-la-gi">Pine Script là gì và làm được những gì?</a></li>
+                        <li><a href="#cau-truc-co-ban">Cấu trúc 4 phần của một file Pine Script</a></li>
+                        <li><a href="#vi-du-indicator">Ví dụ 1: Tự viết chỉ báo giao cắt EMA 20 / EMA 50</a></li>
+                        <li><a href="#vi-du-strategy">Ví dụ 2: Chuyển thành Strategy để backtest tự động</a></li>
+                        <li><a href="#tranh-loi-repaint">3 nguyên tắc vàng tránh lỗi Repaint khi viết code</a></li>
+                        <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ol>
+                </details>
+
+                <h2 id="pine-script-la-gi">1. Pine Script là gì và làm được những gì?</h2>
+                <p>Pine Script chạy trực tiếp trên máy chủ đám mây của TradingView — bạn không cần cài Python, không cần thuê VPS để chạy chỉ báo. Toàn bộ trình soạn thảo <strong>Pine Editor</strong> đã tích hợp sẵn ở thanh công cụ đáy màn hình Supercharts.</p>
+                <ul>
+                    <li><strong>Gộp nhiều chỉ báo thành 1:</strong> Kết hợp EMA 20, 50, 200, VWAP và bộ lọc RSI vào một script gọn gàng duy nhất.</li>
+                    <li><strong>Backtest tốc độ cao:</strong> Kiểm tra hiệu suất chiến lược qua nhiều năm dữ liệu chỉ trong 1 giây bằng <em>Strategy Tester</em> (đặc biệt gói Premium hỗ trợ Deep Backtesting).</li>
+                    <li><strong>Tự động hóa giao dịch:</strong> Gửi tín hiệu JSON qua Webhook khi điều kiện xảy ra để bot trên Binance, Bybit hoặc 3Commas tự khớp lệnh.</li>
+                </ul>
+
+                <h2 id="cau-truc-co-ban">2. Cấu trúc 4 phần của một file Pine Script</h2>
+                <ol>
+                    <li><strong>Khai báo phiên bản:</strong> Dòng đầu tiên luôn là <code>//@version=5</code> (hoặc <code>//@version=6</code>).</li>
+                    <li><strong>Khai báo loại script:</strong> Dùng <code>indicator("Tên", overlay=true)</code> để vẽ chỉ báo đè lên nến, hoặc <code>strategy("Tên", overlay=true)</code> để backtest mua/bán.</li>
+                    <li><strong>Tham số đầu vào &amp; tính toán:</strong> Dùng <code>input.int()</code> để người dùng tùy chỉnh thông số mà không cần sửa code, kết hợp thư viện có sẵn <code>ta.ema()</code>, <code>ta.rsi()</code>, <code>ta.crossover()</code>.</li>
+                    <li><strong>Hiển thị &amp; cảnh báo:</strong> Dùng <code>plot()</code>, <code>plotshape()</code> để vẽ lên biểu đồ và <code>alertcondition()</code> để tạo cảnh báo.</li>
+                </ol>
+
+                <h2 id="vi-du-indicator">3. Ví dụ 1: Tự viết chỉ báo giao cắt EMA 20 / EMA 50</h2>
+                <p>Mở <strong>Pine Editor</strong> ở đáy biểu đồ, dán đoạn mã sau rồi nhấn <strong>Add to chart</strong>:</p>
+<pre><code>//@version=5
+indicator("EMA 20/50 Crossover Signal", overlay=true)
+
+fastLen = input.int(20, "EMA nhanh", minval=1)
+slowLen = input.int(50, "EMA chậm", minval=1)
+
+emaFast = ta.ema(close, fastLen)
+emaSlow = ta.ema(close, slowLen)
+
+buySignal  = ta.crossover(emaFast, emaSlow)
+sellSignal = ta.crossunder(emaFast, emaSlow)
+
+plot(emaFast, "EMA 20", color=color.new(#059669, 0), linewidth=2)
+plot(emaSlow, "EMA 50", color=color.new(#dc2626, 0), linewidth=2)
+
+plotshape(buySignal, title="Mua", style=shape.triangleup, location=location.belowbar, color=color.green, size=size.small)
+plotshape(sellSignal, title="Bán", style=shape.triangledown, location=location.abovebar, color=color.red, size=size.small)
+
+alertcondition(buySignal, title="Tín hiệu MUA EMA", message="EMA 20 cắt lên EMA 50 trên {{ticker}} khung {{interval}}")
+alertcondition(sellSignal, title="Tín hiệu BÁN EMA", message="EMA 20 cắt xuống EMA 50 trên {{ticker}} khung {{interval}}")</code></pre>
+
+                <h2 id="vi-du-strategy">4. Ví dụ 2: Chuyển thành Strategy để backtest tự động</h2>
+                <p>Chỉ cần đổi <code>indicator</code> thành <code>strategy</code> và thêm <code>strategy.entry</code>, tab <strong>Strategy Tester</strong> sẽ lập tức tính ra Net Profit, Winrate, Profit Factor và Max Drawdown:</p>
+<pre><code>//@version=5
+strategy("EMA 20/50 Backtest", overlay=true, initial_capital=10000, default_qty_type=strategy.percent_of_equity, default_qty_value=10, commission_type=strategy.commission.percent, commission_value=0.05)
+
+emaFast = ta.ema(close, 20)
+emaSlow = ta.ema(close, 50)
+
+if ta.crossover(emaFast, emaSlow)
+    strategy.entry("Long", strategy.long)
+
+if ta.crossunder(emaFast, emaSlow)
+    strategy.close("Long")</code></pre>
+                <blockquote>
+                    Lưu ý quan trọng: Luôn khai báo <code>commission_value</code> (phí giao dịch, ví dụ 0.05% cho sàn Crypto hoặc 0.15% cho chứng khoán Việt Nam) để kết quả backtest sát thực tế.
+                </blockquote>
+
+                <h2 id="tranh-loi-repaint">5. 3 nguyên tắc vàng tránh lỗi Repaint khi viết code</h2>
+                <ul>
+                    <li><strong>Chỉ kích hoạt khi nến đóng cửa:</strong> Trong lúc cây nến hiện tại đang chạy, giá đóng cửa <code>close</code> thay đổi liên tục làm tín hiệu nhấp nháy. Hãy kết hợp <code>barstate.isconfirmed</code> cho cảnh báo thực tế.</li>
+                    <li><strong>Tắt lookahead khi gọi khung lớn:</strong> Khi dùng <code>request.security()</code> để lấy EMA khung 4H vẽ lên khung 15m, luôn dùng <code>lookahead = barmerge.lookahead_off</code> và lấy <code>close[1]</code>.</li>
+                    <li><strong>Không dùng nến Heikin Ashi để backtest trực tiếp:</strong> Giá mở/đóng của nến Heikin Ashi là giá trung bình, không phải giá khớp lệnh thực tế trên sàn.</li>
+                </ul>
+
+                <section id="faq" class="faq-section">
+                    <h2>6. Câu hỏi thường gặp (FAQ)</h2>
+                    <details class="faq-item" open>
+                        <summary>Không biết lập trình có học Pine Script được không?</summary>
+                        <p>Hoàn toàn được. Cú pháp Pine Script rất trực quan và ngắn gọn; bạn có thể bắt đầu bằng cách mở mã nguồn của các chỉ báo miễn phí trong thư viện cộng đồng và chỉnh sửa theo ý muốn.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Gộp nhiều chỉ báo vào 1 script có giúp vượt giới hạn chỉ báo không?</summary>
+                        <p>Có. Một script Pine Script có thể tính và vẽ hàng chục đường trung bình, dải Bollinger hoặc bảng thống kê nhưng chỉ tính là 1 chỉ báo trên biểu đồ.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Gói TradingView nào hỗ trợ Deep Backtesting?</summary>
+                        <p>Tính năng <strong>Deep Backtesting</strong> (kiểm thử toàn bộ lịch sử dữ liệu của sàn từ trước đến nay thay vì chỉ giới hạn số nến trên màn hình) chỉ có từ gói <strong>Premium</strong> trở lên.</p>
+                    </details>
+                </section>
+
+                <aside class="related-articles">
+                    <h3>Bài viết liên quan nên đọc tiếp</h3>
+                    <ul>
+                        <li><a href="ket-noi-tradingview-voi-san-giao-dich-va-webhook-bot.html">Hướng dẫn kết nối TradingView với sàn giao dịch &amp; bắn tín hiệu Webhook Bot</a></li>
+                        <li><a href="cach-dung-bar-replay-backtest-tren-tradingview.html">Cách dùng Bar Replay backtest chiến lược thủ công trên TradingView</a></li>
+                        <li><a href="alerts-guide.html">Cách thiết lập cảnh báo không hết hạn trên TradingView</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="article-cta">
+                <h3>Backtest Toàn Bộ Lịch Sử Với Deep Backtesting &amp; 400 Cảnh Báo</h3>
+                <p>Nâng cấp TradingView Premium chính hãng tại TradingView.vn để mở khóa Deep Backtesting, Webhook không giới hạn và 25 chỉ báo/biểu đồ.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Xem Bảng Giá Ưu Đãi</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                        alt="TradingView.vn">
+                </div>
+                <p class="footer-text">© 2026 TradingView.vn — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/affiliate.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dùng TradingView Phân Tích Chứng Khoán Việt Nam (VNINDEX, HOSE) | TradingView.vn</title>
+    <meta name="description"
+        content="Hướng dẫn xem biểu đồ VNINDEX, VN30 và cổ phiếu HOSE, HNX, UPCOM trên TradingView: cách tìm mã chuẩn, chỉnh tỷ lệ chia tách, xem báo cáo tài chính và lọc nhóm ngành dẫn sóng.">
+    <link rel="canonical" href="https://tradingview.vn/blog/tradingview-cho-chung-khoan-viet-nam-vnindex.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="TradingView.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://tradingview.vn/blog/tradingview-cho-chung-khoan-viet-nam-vnindex.html">
+    <meta property="og:title" content="Hướng Dẫn Dùng TradingView Phân Tích Chứng Khoán Việt Nam (HOSE, HNX, VN30)">
+    <meta property="og:description"
+        content="Mẹo cài đặt TradingView chuyên biệt cho nhà đầu tư chứng khoán Việt Nam: cú pháp tìm mã HOSE/HNX, so sánh sức mạnh RS với VNINDEX và xem BCTC.">
+    <meta property="og:image" content="https://tradingview.vn/assets/images/hero-tradingview-1200.webp">
+    <meta property="article:published_time" content="2026-11-26">
+    <meta property="article:modified_time" content="2026-11-26">
+    <meta property="article:section" content="Chứng khoán Việt Nam">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dùng TradingView Phân Tích Chứng Khoán Việt Nam (VNINDEX, HOSE)">
+    <meta name="twitter:description"
+        content="Cách tìm mã chuẩn, thiết lập Watchlist theo ngành và đo sức mạnh tương đối cổ phiếu Việt Nam trên TradingView.">
+    <meta name="twitter:image" content="https://tradingview.vn/assets/images/hero-tradingview-1200.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css?v=20261126-seo1">
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/favicon.png?v=20261124-brand1">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Hướng Dẫn Dùng TradingView Phân Tích Chứng Khoán Việt Nam (HOSE, HNX, VN30)",
+                "description": "Hướng dẫn xem biểu đồ VNINDEX, VN30 và cổ phiếu HOSE, HNX, UPCOM trên TradingView: cách tìm mã chuẩn, chỉnh cổ tức, xem BCTC và lọc nhóm ngành dẫn sóng.",
+                "image": "https://tradingview.vn/assets/images/hero-tradingview-1200.webp",
+                "datePublished": "2026-11-26",
+                "dateModified": "2026-11-26",
+                "inLanguage": "vi",
+                "author": { "@type": "Organization", "name": "TradingView.vn", "url": "https://tradingview.vn/" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TradingView.vn",
+                    "logo": { "@type": "ImageObject", "url": "https://tradingview.vn/assets/icons/favicon.png" }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://tradingview.vn/blog/tradingview-cho-chung-khoan-viet-nam-vnindex.html"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://tradingview.vn/" },
+                    { "@type": "ListItem", "position": 2, "name": "Cẩm nang", "item": "https://tradingview.vn/#blog" },
+                    { "@type": "ListItem", "position": 3, "name": "TradingView cho chứng khoán Việt Nam" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Dữ liệu chứng khoán Việt Nam trên TradingView có bị trễ không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Dữ liệu cổ phiếu sàn HOSE, HNX, UPCOM trên TradingView mặc định là dữ liệu thời gian thực hoặc trễ rất ngắn theo nguồn cấp sàn, hoàn toàn đủ chính xác cho phân tích kỹ thuật khung 15m, 1H, 1D và 1W."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Làm sao bật giá điều chỉnh sau chia cổ tức trên TradingView?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Nhấn vào nút ADJ ở góc dưới bên phải màn hình biểu đồ (bên cạnh nút Log và Auto) để TradingView tự động điều chỉnh lịch sử giá theo cổ tức tiền mặt và chia tách cổ phiếu."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "TradingView có xem được chỉ số tài chính P/E, ROE, doanh thu của doanh nghiệp Việt Nam không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Có. Bạn có thể bấm nút Financials trên thanh công cụ biểu đồ để vẽ trực tiếp biểu đồ Doanh thu, Lợi nhuận sau thuế, Biên lợi nhuận gộp và P/E ngay bên dưới biểu đồ giá cổ phiếu."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                    alt="TradingView.vn">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Chứng khoán VN</span>
+            </div>
+            <h1 class="article-hero-title">Hướng Dẫn Dùng TradingView Phân Tích Chứng Khoán Việt Nam (HOSE, HNX, VN30)</h1>
+            <div class="article-meta">
+                <span>📅 26 Tháng 11, 2026</span>
+                <span>⏱️ 8 phút đọc</span>
+                <span>✍️ Đội ngũ TradingView.vn</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/hero-tradingview-1200.webp" width="1200" height="567"
+                alt="Phân tích biểu đồ VNINDEX và cổ phiếu HOSE HNX trên TradingView"
+                class="article-featured-image" loading="eager">
+
+            <div class="article-body">
+                <div class="tldr-box">
+                    <strong class="tldr-title">Tóm tắt nhanh (Key Takeaways)</strong>
+                    <p>Nhà đầu tư chứng khoán Việt Nam có thể phân tích đầy đủ <strong>VNINDEX, VN30, HOSE, HNX và UPCOM</strong> ngay trên TradingView mà không cần cài phần mềm thứ ba. Chỉ cần nắm đúng cú pháp tìm mã (<code>HOSE:FPT</code>, <code>HNX:SHS</code>), bật nút <code>ADJ</code> điều chỉnh cổ tức, dùng công thức so sánh sức mạnh tương đối <code>MÃ/VNINDEX</code> và kết hợp biểu đồ tài chính <strong>Financials</strong> ngay dưới nến giá.</p>
+                </div>
+
+                <details class="article-toc" open>
+                    <summary>Mục lục bài viết</summary>
+                    <ol>
+                        <li><a href="#cu-phap-tim-ma">Cú pháp tìm mã chỉ số và cổ phiếu Việt Nam chuẩn xác</a></li>
+                        <li><a href="#chinh-co-tuc-log">2 thiết lập bắt buộc cho biểu đồ chứng khoán VN: ADJ và Log</a></li>
+                        <li><a href="#watchlist-nhom-nganh">Cách tổ chức Watchlist theo 6 nhóm ngành dẫn sóng</a></li>
+                        <li><a href="#so-sanh-rs">Tuyệt chiêu đo sức mạnh tương đối (RS) với VNINDEX</a></li>
+                        <li><a href="#xem-bctc">Xem trực tiếp Doanh thu &amp; Lợi nhuận (Financials) trên biểu đồ</a></li>
+                        <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ol>
+                </details>
+
+                <h2 id="cu-phap-tim-ma">1. Cú pháp tìm mã chỉ số và cổ phiếu Việt Nam chuẩn xác</h2>
+                <p>Nhiều mã cổ phiếu Việt Nam có ký hiệu trùng với cổ phiếu Mỹ hoặc châu Âu (ví dụ <code>SSI</code>, <code>VNM</code>, <code>ACB</code>, <code>MSB</code>). Để không mở nhầm mã nước ngoài, hãy luôn gõ kèm tiền tố sàn giao dịch:</p>
+                <div class="table-wrap">
+                    <table class="seo-table">
+                        <thead>
+                            <tr>
+                                <th>Đối tượng cần xem</th>
+                                <th>Cú pháp gõ vào ô tìm kiếm</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chỉ số VN-Index</td>
+                                <td><code>HOSE:VNINDEX</code></td>
+                                <td>Chỉ số đại diện toàn sàn TP.HCM</td>
+                            </tr>
+                            <tr>
+                                <td>Chỉ số VN30</td>
+                                <td><code>HOSE:VN30</code></td>
+                                <td>Rổ 30 cổ phiếu vốn hóa &amp; thanh khoản lớn nhất</td>
+                            </tr>
+                            <tr>
+                                <td>Cổ phiếu sàn HOSE</td>
+                                <td><code>HOSE:FPT</code>, <code>HOSE:HPG</code>, <code>HOSE:VCB</code></td>
+                                <td>Biên độ ±7%/phiên</td>
+                            </tr>
+                            <tr>
+                                <td>Cổ phiếu sàn HNX</td>
+                                <td><code>HNX:SHS</code>, <code>HNX:PVS</code>, <code>HNX:IDC</code></td>
+                                <td>Biên độ ±10%/phiên</td>
+                            </tr>
+                            <tr>
+                                <td>Cổ phiếu sàn UPCOM</td>
+                                <td><code>UPCOM:ACV</code>, <code>UPCOM:BSR</code></td>
+                                <td>Biên độ ±15%/phiên</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="chinh-co-tuc-log">2. 2 thiết lập bắt buộc cho biểu đồ chứng khoán VN: ADJ và Log</h2>
+                <ul>
+                    <li><strong>Bật nút <code>ADJ</code> (Adjusted for Dividends):</strong> Doanh nghiệp Việt Nam rất hay chia cổ tức bằng cổ phiếu tỷ lệ 15–30%, tạo ra các khoảng nhảy giá (gap) nhân tạo. Bật <code>ADJ</code> ở góc dưới bên phải giúp đồ thị mượt mà và các đường hỗ trợ lịch sử chính xác tuyệt đối.</li>
+                    <li><strong>Bật nút <code>Log</code> (Logarithmic Scale):</strong> Khi phân tích chu kỳ 2–5 năm của cổ phiếu tăng trưởng, thang đo Log giúp bạn đánh giá đúng mức tăng theo tỷ lệ phần trăm thay vì số tiền tuyệt đối.</li>
+                </ul>
+
+                <h2 id="watchlist-nhom-nganh">3. Cách tổ chức Watchlist theo 6 nhóm ngành dẫn sóng</h2>
+                <p>Chứng khoán Việt Nam thường chạy theo sóng ngành rất rõ rệt. Hãy nhấn chuột phải vào Watchlist → <strong>Add Section</strong> để chia thành 6 nhóm cố định:</p>
+                <ul>
+                    <li><strong>Chỉ số &amp; Vĩ mô:</strong> <code>HOSE:VNINDEX</code>, <code>HOSE:VN30</code>, <code>TVC:DXY</code> (chỉ số USD), <code>FX_IDC:USDVND</code>.</li>
+                    <li><strong>Ngân hàng:</strong> VCB, BID, CTG, MBB, TCB, ACB, STB.</li>
+                    <li><strong>Chứng khoán:</strong> SSI, VND, VCI, HCM, FTS, MBS.</li>
+                    <li><strong>Bất động sản &amp; KCN:</strong> VHM, KDH, NLG, DIG, IDC, SZC, KBC.</li>
+                    <li><strong>Thép &amp; Vật liệu:</strong> HPG, HSG, NKG.</li>
+                    <li><strong>Công nghệ &amp; Bán lẻ:</strong> FPT, MWG, FRT, DGW.</li>
+                </ul>
+
+                <h2 id="so-sanh-rs">4. Tuyệt chiêu đo sức mạnh tương đối (RS) với VNINDEX</h2>
+                <p>Một cổ phiếu siêu hạng luôn giữ nền giá tốt khi VNINDEX giảm và vượt đỉnh trước khi thị trường hồi phục. Để kiểm tra trực quan, chỉ cần gõ thẳng phép chia vào ô tìm kiếm mã, ví dụ: <code>HOSE:FPT/HOSE:VNINDEX</code> rồi nhấn Enter. Nếu đường biểu đồ tỷ lệ này đang hướng lên và vượt đỉnh 52 tuần, đó là cổ phiếu dẫn dắt (Leader) thực thụ.</p>
+
+                <h2 id="xem-bctc">5. Xem trực tiếp Doanh thu &amp; Lợi nhuận (Financials) trên biểu đồ</h2>
+                <p>Trên thanh công cụ phía trên biểu đồ, bấm nút <strong>Financials</strong> (biểu tượng cột tăng trưởng) → chọn <em>Total Revenue</em> (Doanh thu thuần), <em>Net Income</em> (Lợi nhuận sau thuế) hoặc <em>PE Ratio</em>. TradingView sẽ vẽ trực tiếp các cột kết quả kinh doanh theo từng quý ngay phía dưới đường giá, giúp bạn kết hợp mượt mà giữa phân tích cơ bản (FA) và phân tích kỹ thuật (TA) chỉ trên một màn hình.</p>
+
+                <section id="faq" class="faq-section">
+                    <h2>6. Câu hỏi thường gặp (FAQ)</h2>
+                    <details class="faq-item" open>
+                        <summary>Dữ liệu chứng khoán Việt Nam trên TradingView có chính xác không?</summary>
+                        <p>Có. Dữ liệu sàn HOSE, HNX, UPCOM trên TradingView đầy đủ nến lịch sử nhiều năm, hỗ trợ cả biểu đồ ngày, tuần và các khung intraday 15m, 1H để lọc điểm mua chuẩn.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Làm sao bật giá điều chỉnh sau chia cổ tức?</summary>
+                        <p>Bấm nút <code>ADJ</code> nằm ở góc dưới cùng bên phải màn hình biểu đồ.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Có thể lọc toàn bộ cổ phiếu Việt Nam theo P/E, ROE và RSI cùng lúc không?</summary>
+                        <p>Hoàn toàn được bằng công cụ Stock Screener chọn thị trường Vietnam. Bạn có thể xem chi tiết bộ lọc mẫu tại bài <a href="cach-loc-co-phieu-crypto-bang-tradingview-screener.html">Cách lọc cổ phiếu Việt Nam &amp; Crypto bằng TradingView Screener</a>.</p>
+                    </details>
+                </section>
+
+                <aside class="related-articles">
+                    <h3>Bài viết liên quan nên đọc tiếp</h3>
+                    <ul>
+                        <li><a href="cach-loc-co-phieu-crypto-bang-tradingview-screener.html">Cách lọc cổ phiếu Việt Nam &amp; Crypto bằng TradingView Screener</a></li>
+                        <li><a href="phan-tich-da-khung-thoi-gian-multi-chart-tradingview.html">Phân tích đa khung thời gian với Multi-Chart Layout</a></li>
+                        <li><a href="tradingview-black-friday-va-cach-mua-gia-re-quanh-nam.html">TradingView Black Friday 2026: Nên chờ sale hay mua ưu đãi quanh năm?</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="article-cta">
+                <h3>Phân Tích Chứng Khoán Việt Nam Chuyên Nghiệp Hơn Mỗi Ngày</h3>
+                <p>Nâng cấp TradingView Essential, Plus hoặc Premium chính hãng tại TradingView.vn — giá rẻ hơn đến 72%, hỗ trợ nhanh qua Zalo/Telegram.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Xem Bảng Giá Ưu Đãi</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                        alt="TradingView.vn">
+                </div>
+                <p class="footer-text">© 2026 TradingView.vn — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/affiliate.js" defer></script>
+</body>
+
+</html>

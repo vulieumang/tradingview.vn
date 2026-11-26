@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cách Lọc Cổ Phiếu & Crypto Bằng TradingView Screener | TradingView.vn</title>
+    <meta name="description"
+        content="Hướng dẫn dùng TradingView Screener để lọc cổ phiếu Việt Nam (HOSE, HNX) và coin Crypto tiềm năng: bộ lọc Breakout, quá bán RSI, dòng tiền đột biến.">
+    <link rel="canonical" href="https://tradingview.vn/blog/cach-loc-co-phieu-crypto-bang-tradingview-screener.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="TradingView.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://tradingview.vn/blog/cach-loc-co-phieu-crypto-bang-tradingview-screener.html">
+    <meta property="og:title" content="Cách Lọc Cổ Phiếu Việt Nam & Crypto Bằng TradingView Screener Hiệu Quả">
+    <meta property="og:description"
+        content="3 bộ lọc TradingView Screener thực chiến giúp tìm nhanh cổ phiếu vượt đỉnh, coin hút dòng tiền và mã đảo chiều chỉ trong 30 giây.">
+    <meta property="og:image" content="https://tradingview.vn/assets/images/blog_indicators.webp">
+    <meta property="article:published_time" content="2026-11-26">
+    <meta property="article:modified_time" content="2026-11-26">
+    <meta property="article:section" content="Bộ lọc thị trường">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cách Lọc Cổ Phiếu & Crypto Bằng TradingView Screener">
+    <meta name="twitter:description"
+        content="3 bộ lọc TradingView Screener thực chiến cho chứng khoán Việt Nam và Crypto.">
+    <meta name="twitter:image" content="https://tradingview.vn/assets/images/blog_indicators.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css?v=20261126-seo1">
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/favicon.png?v=20261124-brand1">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Cách Lọc Cổ Phiếu Việt Nam & Crypto Bằng TradingView Screener Hiệu Quả",
+                "description": "Hướng dẫn dùng TradingView Screener để lọc cổ phiếu Việt Nam (HOSE, HNX) và coin Crypto tiềm năng: bộ lọc Breakout, quá bán RSI, dòng tiền đột biến.",
+                "image": "https://tradingview.vn/assets/images/blog_indicators.webp",
+                "datePublished": "2026-11-26",
+                "dateModified": "2026-11-26",
+                "inLanguage": "vi",
+                "author": { "@type": "Organization", "name": "TradingView.vn", "url": "https://tradingview.vn/" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TradingView.vn",
+                    "logo": { "@type": "ImageObject", "url": "https://tradingview.vn/assets/icons/favicon.png" }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://tradingview.vn/blog/cach-loc-co-phieu-crypto-bang-tradingview-screener.html"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://tradingview.vn/" },
+                    { "@type": "ListItem", "position": 2, "name": "Cẩm nang", "item": "https://tradingview.vn/#blog" },
+                    { "@type": "ListItem", "position": 3, "name": "Lọc cổ phiếu & Crypto bằng TradingView Screener" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "TradingView Stock Screener có lọc được cổ phiếu sàn HOSE, HNX không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Có. Bạn chỉ cần chọn Market = Vietnam (Việt Nam) trong Stock Screener là có thể lọc toàn bộ cổ phiếu trên sàn HOSE, HNX và UPCOM theo cả chỉ số kỹ thuật (EMA, RSI, Volume) lẫn cơ bản (P/E, ROE, vốn hóa)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Có thể xuất danh sách mã lọc được từ Screener ra file CSV không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Có, tính năng xuất dữ liệu CSV từ Screener và biểu đồ được mở khóa từ gói Plus trở lên, rất tiện cho nhà đầu tư cần phân tích thêm bằng Excel hoặc Google Sheets."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Làm sao lọc coin Crypto tránh các đồng thanh khoản thấp dễ bị thao túng?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Trong Crypto Coins Screener hoặc CEX Screener, hãy luôn thêm điều kiện Exchange = Binance (hoặc Bybit/OKX) và Volume 24h > 10 triệu USD để loại bỏ các cặp coin rác thanh khoản mỏng."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                    alt="TradingView.vn">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Screener</span>
+            </div>
+            <h1 class="article-hero-title">Cách Lọc Cổ Phiếu Việt Nam &amp; Crypto Bằng TradingView Screener Hiệu Quả</h1>
+            <div class="article-meta">
+                <span>📅 26 Tháng 11, 2026</span>
+                <span>⏱️ 8 phút đọc</span>
+                <span>✍️ Đội ngũ TradingView.vn</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/blog_indicators.webp" width="320" height="320"
+                alt="Sử dụng bộ lọc TradingView Screener tìm cổ phiếu và coin Crypto tiềm năng"
+                class="article-featured-image" loading="eager">
+
+            <div class="article-body">
+                <div class="tldr-box">
+                    <strong class="tldr-title">Tóm tắt nhanh (Key Takeaways)</strong>
+                    <p><strong>TradingView Screener</strong> giúp bạn quét hơn 1.600 cổ phiếu Việt Nam và hàng nghìn cặp Crypto chỉ trong vài giây thay vì mở xem từng mã thủ công. Chỉ cần kết hợp 3 nhóm tiêu chí — <strong>Thanh khoản (Volume)</strong>, <strong>Xu hướng (EMA/Price)</strong> và <strong>Động lượng (RSI/Relative Volume)</strong> — bạn sẽ thu hẹp danh sách xuống 5–10 cơ hội sáng giá nhất mỗi ngày.</p>
+                </div>
+
+                <details class="article-toc" open>
+                    <summary>Mục lục bài viết</summary>
+                    <ol>
+                        <li><a href="#mo-screener">Cách mở và chọn đúng thị trường trong TradingView Screener</a></li>
+                        <li><a href="#bo-loc-co-phieu-vn">Bộ lọc 1: Săn cổ phiếu Việt Nam bùng nổ dòng tiền (Breakout)</a></li>
+                        <li><a href="#bo-loc-crypto">Bộ lọc 2: Lọc Altcoin Crypto hút dòng tiền mạnh</a></li>
+                        <li><a href="#bo-loc-dao-chieu">Bộ lọc 3: Tìm cổ phiếu cơ bản tốt đang ở vùng quá bán</a></li>
+                        <li><a href="#quy-trinh-luu-watch">Cách lưu Preset và đưa nhanh vào Watchlist theo dõi</a></li>
+                        <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ol>
+                </details>
+
+                <h2 id="mo-screener">1. Cách mở và chọn đúng thị trường trong TradingView Screener</h2>
+                <p>Từ trang chủ TradingView, vào menu <strong>Products → Screeners</strong>, chọn <strong>Stock Screener</strong> (cho chứng khoán) hoặc <strong>Crypto Coins / CEX Screener</strong> (cho tiền điện tử). Để lọc cổ phiếu Việt Nam, nhấn vào biểu tượng lá cờ ở góc trên bên trái bảng lọc và đổi sang <strong>Vietnam</strong>.</p>
+                <p>Nếu bạn đang ở sẵn màn hình Supercharts, bạn cũng có thể mở nhanh thanh Screener ở góc dưới bên trái để vừa bấm chọn mã trong bảng lọc, vừa nhìn biểu đồ cập nhật ngay phía trên.</p>
+
+                <h2 id="bo-loc-co-phieu-vn">2. Bộ lọc 1: Săn cổ phiếu Việt Nam bùng nổ dòng tiền (Breakout)</h2>
+                <p>Bộ lọc này phù hợp với nhà đầu tư đánh theo đà tăng trưởng (Momentum / CANSLIM) trên sàn HOSE và HNX:</p>
+                <div class="table-wrap">
+                    <table class="seo-table">
+                        <thead>
+                            <tr>
+                                <th>Tiêu chí lọc</th>
+                                <th>Giá trị thiết lập</th>
+                                <th>Ý nghĩa thực chiến</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Exchange</strong></td>
+                                <td>HOSE, HNX</td>
+                                <td>Tập trung sàn thanh khoản tốt, biên độ rõ ràng.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Average Volume (30d)</strong></td>
+                                <td>&gt; 500.000 cổ phiếu</td>
+                                <td>Loại bỏ cổ phiếu bo cung, khó thoát hàng.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Relative Volume (RVOL)</strong></td>
+                                <td>&gt; 1.5</td>
+                                <td>Khối lượng phiên hôm nay cao hơn 150% trung bình — dấu hiệu dòng tiền lớn nhập cuộc.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Price vs EMA 50</strong></td>
+                                <td>Above EMA 50 &amp; EMA 200</td>
+                                <td>Đảm bảo cổ phiếu đang nằm trong xu hướng tăng trung-dài hạn.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RSI (14)</strong></td>
+                                <td>Từ 55 đến 72</td>
+                                <td>Động lượng đang tăng khỏe nhưng chưa quá nóng.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="bo-loc-crypto">3. Bộ lọc 2: Lọc Altcoin Crypto hút dòng tiền mạnh</h2>
+                <p>Với thị trường Crypto chạy 24/7 và có hàng chục nghìn cặp giao dịch, hãy mở <strong>CEX Screener</strong> và cài bộ lọc khung <code>1H</code> hoặc <code>4H</code>:</p>
+                <ul>
+                    <li><strong>Exchange:</strong> Chọn <code>BINANCE</code> (hoặc <code>BYBIT</code>) và <strong>Quote Currency</strong> = <code>USDT</code>.</li>
+                    <li><strong>Volume 24h in USD:</strong> <code>&gt; 15M</code> để chỉ giữ các đồng có thanh khoản lớn, spread thấp.</li>
+                    <li><strong>Change 4h (%):</strong> <code>&gt; 3%</code> kèm <strong>Relative Volume</strong> <code>&gt; 2</code>.</li>
+                    <li><strong>ADX (14):</strong> <code>&gt; 25</code> để xác nhận xu hướng đang mạnh thực sự chứ không phải râu nến quét thanh khoản.</li>
+                </ul>
+
+                <h2 id="bo-loc-dao-chieu">4. Bộ lọc 3: Tìm cổ phiếu cơ bản tốt đang ở vùng quá bán</h2>
+                <p>Nếu bạn thích mua tích sản các doanh nghiệp đầu ngành khi thị trường điều chỉnh sâu, hãy kết hợp yếu tố cơ bản (Fundamental) và kỹ thuật ngay trên TradingView Stock Screener:</p>
+                <ul>
+                    <li><strong>Market Cap (Vốn hóa):</strong> <code>&gt; 5.000 tỷ VNĐ</code>.</li>
+                    <li><strong>ROE (TTM):</strong> <code>&gt; 15%</code> và <strong>P/E (TTM):</strong> <code>&lt; 15</code>.</li>
+                    <li><strong>RSI (14) khung 1D:</strong> <code>&lt; 35</code> (vào vùng quá bán ngắn hạn).</li>
+                    <li><strong>Price:</strong> Gần đường <code>EMA 200</code> hoặc chạm biên dưới <code>Bollinger Bands (20, 2)</code>.</li>
+                </ul>
+
+                <h2 id="quy-trinh-luu-watch">5. Cách lưu Preset và đưa nhanh vào Watchlist theo dõi</h2>
+                <p>Sau khi cài xong các điều kiện, bấm <strong>Save Screen As...</strong> và đặt tên dễ nhớ (ví dụ: <em>VN Breakout D1</em>, <em>Crypto Momentum 4H</em>). Mỗi tối trước phiên giao dịch, bạn chỉ mất 30 giây mở lại bộ lọc, gắn cờ màu cho 5 mã đẹp nhất rồi chuyển sang chế độ biểu đồ để đặt <a href="alerts-guide.html">cảnh báo giá tự động</a>.</p>
+
+                <section id="faq" class="faq-section">
+                    <h2>6. Câu hỏi thường gặp (FAQ)</h2>
+                    <details class="faq-item" open>
+                        <summary>TradingView Stock Screener có lọc được cổ phiếu sàn HOSE, HNX không?</summary>
+                        <p>Có. Chỉ cần đổi thị trường (Market) sang <strong>Vietnam</strong> là bạn có thể lọc toàn bộ cổ phiếu HOSE, HNX và UPCOM theo cả chỉ tiêu kỹ thuật lẫn báo cáo tài chính.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Có xuất được danh sách cổ phiếu từ Screener ra Excel/CSV không?</summary>
+                        <p>Có. Gói <strong>Plus</strong> và <strong>Premium</strong> hỗ trợ xuất dữ liệu biểu đồ và bảng lọc sang định dạng CSV chỉ với một cú nhấp chuột.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Bộ lọc có tự động cập nhật theo thời gian thực không?</summary>
+                        <p>Bạn có thể bật tính năng tự động làm mới (Auto-refresh mỗi 10 giây hoặc 1 phút) trên thanh công cụ của Screener để bắt tín hiệu ngay trong phiên.</p>
+                    </details>
+                </section>
+
+                <aside class="related-articles">
+                    <h3>Bài viết liên quan nên đọc tiếp</h3>
+                    <ul>
+                        <li><a href="tradingview-cho-chung-khoan-viet-nam-vnindex.html">Hướng dẫn dùng TradingView phân tích chứng khoán Việt Nam (HOSE, HNX, VN30)</a></li>
+                        <li><a href="huong-dan-volume-profile-tradingview.html">Hướng dẫn sử dụng Volume Profile (VPVR, VPSV) trên TradingView</a></li>
+                        <li><a href="huong-dan-su-dung-tradingview-cho-nguoi-moi.html">Hướng dẫn sử dụng TradingView từ A–Z cho người mới bắt đầu</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="article-cta">
+                <h3>Lọc Mã Nhanh, Xuất Dữ Liệu CSV &amp; Không Quảng Cáo</h3>
+                <p>Nâng cấp TradingView Plus hoặc Premium chính hãng tại TradingView.vn để tối ưu hóa quy trình săn cổ phiếu và Crypto mỗi ngày.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Xem Bảng Giá Ưu Đãi</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                        alt="TradingView.vn">
+                </div>
+                <p class="footer-text">© 2026 TradingView.vn — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/affiliate.js" defer></script>
+</body>
+
+</html>

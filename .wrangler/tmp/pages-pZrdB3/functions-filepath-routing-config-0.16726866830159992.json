@@ -1,0 +1,21 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/geo",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/geo.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/",
+      "mountPath": "/",
+      "method": "",
+      "middleware": [
+        "_middleware.js:onRequest"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}

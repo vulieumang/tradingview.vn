@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Allow major AI search crawlers for GEO / AI Overviews indexing
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://tradingview.vn/sitemap.xml

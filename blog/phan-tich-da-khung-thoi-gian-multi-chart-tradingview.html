@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Tích Đa Khung Thời Gian Với Multi-Chart TradingView | TradingView.vn</title>
+    <meta name="description"
+        content="Hướng dẫn chia nhiều màn hình biểu đồ (Multi-Chart Layout) trên TradingView để phân tích đa khung thời gian (D1-H4-M15), đồng bộ hình vẽ và chọn bộ khung chuẩn.">
+    <link rel="canonical" href="https://tradingview.vn/blog/phan-tich-da-khung-thoi-gian-multi-chart-tradingview.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="TradingView.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://tradingview.vn/blog/phan-tich-da-khung-thoi-gian-multi-chart-tradingview.html">
+    <meta property="og:title" content="Phân Tích Đa Khung Thời Gian Với Multi-Chart Layout Trên TradingView">
+    <meta property="og:description"
+        content="Cách chia 2, 4, 8 biểu đồ trên 1 tab TradingView, thiết lập đồng bộ Crosshair/Drawing và bộ khung chuẩn cho Scalping, Day Trading, Swing Trading.">
+    <meta property="og:image" content="https://tradingview.vn/assets/images/blog_3_plans.webp">
+    <meta property="article:published_time" content="2026-11-26">
+    <meta property="article:modified_time" content="2026-11-26">
+    <meta property="article:section" content="Quy trình phân tích">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Phân Tích Đa Khung Thời Gian Với Multi-Chart TradingView">
+    <meta name="twitter:description"
+        content="Thiết lập Multi-Chart Layout trên TradingView để đồng bộ phân tích đa khung thời gian chuẩn chuyên nghiệp.">
+    <meta name="twitter:image" content="https://tradingview.vn/assets/images/blog_3_plans.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css?v=20261126-seo1">
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/favicon.png?v=20261124-brand1">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Phân Tích Đa Khung Thời Gian Với Multi-Chart Layout Trên TradingView",
+                "description": "Hướng dẫn chia nhiều màn hình biểu đồ (Multi-Chart Layout) trên TradingView để phân tích đa khung thời gian, đồng bộ hình vẽ và chọn bộ khung chuẩn.",
+                "image": "https://tradingview.vn/assets/images/blog_3_plans.webp",
+                "datePublished": "2026-11-26",
+                "dateModified": "2026-11-26",
+                "inLanguage": "vi",
+                "author": { "@type": "Organization", "name": "TradingView.vn", "url": "https://tradingview.vn/" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TradingView.vn",
+                    "logo": { "@type": "ImageObject", "url": "https://tradingview.vn/assets/icons/favicon.png" }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://tradingview.vn/blog/phan-tich-da-khung-thoi-gian-multi-chart-tradingview.html"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://tradingview.vn/" },
+                    { "@type": "ListItem", "position": 2, "name": "Cẩm nang", "item": "https://tradingview.vn/#blog" },
+                    { "@type": "ListItem", "position": 3, "name": "Phân tích đa khung thời gian với Multi-Chart" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Mỗi gói TradingView chia được tối đa bao nhiêu biểu đồ trên 1 tab?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Gói Basic miễn phí chỉ mở được 1 biểu đồ/tab. Gói Essential chia được 2 biểu đồ/tab, gói Plus chia được 4 biểu đồ/tab và gói Premium chia tối đa 8 biểu đồ/tab."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Làm sao để vẽ đường hỗ trợ ở khung H4 tự động hiện sang khung M15?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Ở thanh công cụ vẽ bên trái, bấm vào biểu tượng đồng bộ hình vẽ (Sync Drawings) và chọn Sync in layout hoặc Sync globally. Mọi đường vẽ trên cùng một mã sẽ tự hiển thị đồng thời ở tất cả khung thời gian."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Nên chọn tỷ lệ chênh lệch giữa các khung thời gian là bao nhiêu?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Quy tắc chuẩn là bội số 4x đến 6x giữa hai khung liền kề: ví dụ Swing Trader dùng W1 - D1 - H4, Day Trader dùng D1 - H1 - M15, còn Scalper dùng H1 - M15 - M1/M3."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                    alt="TradingView.vn">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Đa khung thời gian</span>
+            </div>
+            <h1 class="article-hero-title">Phân Tích Đa Khung Thời Gian Với Multi-Chart Layout Trên TradingView</h1>
+            <div class="article-meta">
+                <span>📅 26 Tháng 11, 2026</span>
+                <span>⏱️ 8 phút đọc</span>
+                <span>✍️ Đội ngũ TradingView.vn</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/blog_3_plans.webp" width="320" height="320"
+                alt="So sánh bố cục chia nhiều biểu đồ Multi-Chart trên các gói TradingView"
+                class="article-featured-image" loading="eager">
+
+            <div class="article-body">
+                <div class="tldr-box">
+                    <strong class="tldr-title">Tóm tắt nhanh (Key Takeaways)</strong>
+                    <p><strong>Phân tích đa khung thời gian (MTFA)</strong> giúp bạn đi thuận xu hướng lớn và bóp nhỏ điểm cắt lỗ ở khung nhỏ. Với <strong>Multi-Chart Layout</strong> của TradingView (2 biểu đồ trên Essential, 4 trên Plus, 8 trên Premium), bạn có thể quan sát đồng thời D1 – H4 – M15 trên cùng một màn hình, đồng bộ mã giao dịch, con trỏ chuột (Crosshair) và hình vẽ chỉ bằng một cú nhấp.</p>
+                </div>
+
+                <details class="article-toc" open>
+                    <summary>Mục lục bài viết</summary>
+                    <ol>
+                        <li><a href="#tai-sao-can-mtfa">Tại sao chỉ nhìn 1 khung thời gian dễ bị quét Stop Loss?</a></li>
+                        <li><a href="#bo-khung-chuan">Bảng bộ 3 khung thời gian chuẩn theo từng phong cách</a></li>
+                        <li><a href="#thiet-lap-multi-chart">Cách chia màn hình và bật đồng bộ trong Multi-Chart</a></li>
+                        <li><a href="#quy-trinh-top-down">Quy trình Top-Down 3 bước trên cùng 1 màn hình</a></li>
+                        <li><a href="#goi-nao-phu-hop">Nên chọn 2, 4 hay 8 biểu đồ trên một tab?</a></li>
+                        <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ol>
+                </details>
+
+                <h2 id="tai-sao-can-mtfa">1. Tại sao chỉ nhìn 1 khung thời gian dễ bị quét Stop Loss?</h2>
+                <p>Một cú phá vỡ (breakout) trông rất đẹp trên khung 5 phút thực chất có thể đang đâm thẳng vào vùng kháng cự cực mạnh của khung 4 giờ hoặc khung Ngày. Nếu không nhìn bối cảnh lớn, bạn rất dễ mua ngay đỉnh nhịp hồi hoặc bán ngay đáy sóng tăng.</p>
+                <p>Trước đây, người dùng bản miễn phí phải liên tục bấm qua lại giữa <code>D1 → H4 → M15</code> hoặc mở nhiều tab trình duyệt rất tốn RAM và dễ quên bối cảnh. Tính năng <strong>Select Layout (Multi-Chart)</strong> giải quyết triệt để vấn đề này bằng cách đặt tất cả các khung cạnh nhau trên cùng một tầm mắt.</p>
+
+                <h2 id="bo-khung-chuan">2. Bảng bộ 3 khung thời gian chuẩn theo từng phong cách</h2>
+                <p>Nguyên tắc vàng khi chọn khung là tỷ lệ chênh lệch giữa hai khung liền kề khoảng <strong>4 lần đến 6 lần</strong> (không quá sát như M15 với M30, cũng không quá xa như W1 với M1):</p>
+                <div class="table-wrap">
+                    <table class="seo-table">
+                        <thead>
+                            <tr>
+                                <th>Phong cách giao dịch</th>
+                                <th>Khung xu hướng (HTF)</th>
+                                <th>Khung cấu trúc (MTF)</th>
+                                <th>Khung vào lệnh (LTF)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Scalping (Lướt sóng nhanh)</strong></td>
+                                <td>1H</td>
+                                <td>15m</td>
+                                <td>1m hoặc 3m</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Day Trading (Trong ngày)</strong></td>
+                                <td>1D / 4H</td>
+                                <td>1H</td>
+                                <td>15m hoặc 5m</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Swing Trading (Vài ngày – tuần)</strong></td>
+                                <td>1W</td>
+                                <td>1D</td>
+                                <td>4H hoặc 1H</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Đầu tư chứng khoán trung hạn</strong></td>
+                                <td>1M</td>
+                                <td>1W</td>
+                                <td>1D</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="thiet-lap-multi-chart">3. Cách chia màn hình và bật đồng bộ trong Multi-Chart</h2>
+                <ol>
+                    <li>Nhấn vào biểu tượng ô vuông chia bố cục (<strong>Select Layout</strong>) ở góc trên bên phải thanh công cụ.</li>
+                    <li>Chọn kiểu chia phù hợp (ví dụ: <strong>1 lớn bên trái + 2 nhỏ bên phải</strong> để đặt khung D1/H4 to bên trái, còn H1 và M15 ở bên phải).</li>
+                    <li>Trong mục <strong>SYNC IN LAYOUT</strong> ngay bên dưới bảng chọn bố cục, bật 3 công tắc quan trọng:
+                        <ul>
+                            <li><strong>Symbol:</strong> Khi bạn bấm sang một mã mới ở Watchlist, cả 3 khung tự động đổi sang mã đó cùng lúc.</li>
+                            <li><strong>Crosshair:</strong> Di chuột vào một cây nến ở khung M15, con trỏ tự chỉ đúng vị trí thời điểm đó trên khung H4 và D1.</li>
+                            <li><strong>Time (tùy chọn):</strong> Đồng bộ vị trí cuộn thời gian khi xem lại lịch sử.</li>
+                        </ul>
+                    </li>
+                    <li>Bật <strong>Sync Drawings</strong> ở thanh công cụ vẽ bên trái để vùng cung cầu vẽ trên H4 lập tức hiện lên M15.</li>
+                </ol>
+
+                <h2 id="quy-trinh-top-down">4. Quy trình Top-Down 3 bước trên cùng 1 màn hình</h2>
+                <ul>
+                    <li><strong>Bước 1 (Khung lớn nhất):</strong> Xác định xu hướng chính và đánh dấu các vùng thanh khoản/hỗ trợ kháng cự quan trọng. Tuyệt đối ưu tiên đánh thuận hướng khung này.</li>
+                    <li><strong>Bước 2 (Khung trung gian):</strong> Chờ giá hồi về vùng hợp lưu (EMA, Fibonacci 0.5–0.618, hoặc vùng Order Block) và quan sát động lượng giảm dần.</li>
+                    <li><strong>Bước 3 (Khung nhỏ nhất):</strong> Chờ tín hiệu phá vỡ cấu trúc nhỏ (CHoCH / BOS) hoặc nến đảo chiều xác nhận để vào lệnh với mức Stop Loss ngắn, giúp nâng tỷ lệ R:R từ 1:1.5 lên 1:3 hoặc 1:4.</li>
+                </ul>
+
+                <h2 id="goi-nao-phu-hop">5. Nên chọn 2, 4 hay 8 biểu đồ trên một tab?</h2>
+                <p>Nếu bạn chỉ dùng laptop 13–14 inch và cần nhìn 2 khung chính (như D1 + H1), gói <strong>Essential (2 biểu đồ/tab)</strong> là vừa đủ. Với màn hình 24–27 inch cần bộ 3 khung thời gian chuẩn kèm 1 ô theo dõi chỉ số chung (như DXY cho Forex, BTC.D cho Crypto hoặc VNINDEX cho chứng khoán Việt Nam), gói <strong>Plus (4 biểu đồ/tab)</strong> là điểm cân bằng tốt nhất. Còn nếu bạn dùng màn hình Ultrawide/4K theo dõi đồng thời cả nhóm ngành hoặc nhiều cặp tiền, <strong>Premium (8 biểu đồ/tab)</strong> sẽ phát huy tối đa sức mạnh.</p>
+
+                <section id="faq" class="faq-section">
+                    <h2>6. Câu hỏi thường gặp (FAQ)</h2>
+                    <details class="faq-item" open>
+                        <summary>Mỗi gói TradingView chia được tối đa bao nhiêu biểu đồ trên 1 tab?</summary>
+                        <p>Basic (Free): 1 biểu đồ; Essential: 2 biểu đồ; Plus: 4 biểu đồ; Premium: 8 biểu đồ trên mỗi tab.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Làm sao để vẽ đường hỗ trợ ở khung H4 tự hiện sang khung M15?</summary>
+                        <p>Bật nút <strong>Sync Drawings</strong> ở thanh công cụ bên trái sang chế độ <em>Sync in layout</em>. Ngoài ra, trong phần cài đặt của từng đường vẽ (Visibility), bạn có thể ẩn đường vẽ khung nhỏ khỏi khung lớn để biểu đồ D1 luôn sạch sẽ.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Có thể phóng to tạm thời 1 biểu đồ trong bố cục 4 biểu đồ không?</summary>
+                        <p>Có. Chỉ cần nhấp vào biểu đồ muốn phóng to và nhấn tổ hợp phím <code>Alt + Enter</code> (Windows) hoặc <code>Option + Enter</code> (Mac) để phóng to toàn màn hình, nhấn lại lần nữa để thu về bố cục cũ.</p>
+                    </details>
+                </section>
+
+                <aside class="related-articles">
+                    <h3>Bài viết liên quan nên đọc tiếp</h3>
+                    <ul>
+                        <li><a href="bi-quyet-toi-uu-hoa-bieu-do-tren-tradingview-cho-trader.html">Bí quyết tối ưu hóa biểu đồ TradingView gọn đẹp cho trader</a></li>
+                        <li><a href="phim-tat-tradingview-va-meo-tang-toc-phan-tich.html">Trọn bộ phím tắt TradingView &amp; 12 mẹo tăng tốc phân tích</a></li>
+                        <li><a href="plus-vs-premium.html">So sánh chi tiết TradingView Plus và Premium</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="article-cta">
+                <h3>Chia 4 Đến 8 Biểu Đồ Mượt Mà Trên Một Màn Hình</h3>
+                <p>Gói TradingView Premium tại TradingView.vn hiện đang có mức giá ưu đãi ngang gói Plus — tiết kiệm đến 72%.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Xem Bảng Giá Ưu Đãi</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                        alt="TradingView.vn">
+                </div>
+                <p class="footer-text">© 2026 TradingView.vn — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/affiliate.js" defer></script>
+</body>
+
+</html>

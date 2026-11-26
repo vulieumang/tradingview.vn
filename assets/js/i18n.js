@@ -28,10 +28,38 @@
         selector.value = language;
     };
 
+    const readQueryLanguage = () => {
+        try {
+            const lang = new URLSearchParams(window.location.search).get('lang');
+            return lang ? lang.toLowerCase() : null;
+        } catch {
+            return null;
+        }
+    };
+
+    const readGeoLanguage = () => {
+        const lang = document.documentElement.dataset.geoLang;
+        return lang ? lang.toLowerCase() : null;
+    };
+
+    const resolveFallbackLanguage = () => {
+        const browserLanguage = (navigator.language || '').slice(0, 2).toLowerCase();
+        if (browserLanguage === 'vi') return 'vi';
+        if (browserLanguage === 'zh') return 'zh';
+        return 'en';
+    };
+
+    const queryLanguage = readQueryLanguage();
     const preferred = readPreference();
-    const browserLanguage = (navigator.language || 'vi').slice(0, 2).toLowerCase();
-    const activeLanguage = supportedLanguages.includes(preferred) ? preferred :
-        supportedLanguages.includes(browserLanguage) ? browserLanguage : 'vi';
+    const geoLanguage = readGeoLanguage();
+
+    // Priority: URL ?lang -> saved manual preference -> Cloudflare GeoIP -> browser fallback
+    const activeLanguage =
+        supportedLanguages.includes(queryLanguage) ? queryLanguage :
+        supportedLanguages.includes(preferred) ? preferred :
+        supportedLanguages.includes(geoLanguage) ? geoLanguage :
+        resolveFallbackLanguage();
+
     applyLanguage(activeLanguage);
 
     selector.addEventListener('change', () => {

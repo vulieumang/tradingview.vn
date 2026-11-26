@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Nối TradingView Với Sàn Giao Dịch & Webhook Bot | TradingView.vn</title>
+    <meta name="description"
+        content="Hướng dẫn kết nối TradingView đặt lệnh trực tiếp trên sàn (OKX, BingX, Pepperstone, OANDA) và thiết lập Webhook gửi tín hiệu JSON tự động sang bot giao dịch.">
+    <link rel="canonical" href="https://tradingview.vn/blog/ket-noi-tradingview-voi-san-giao-dich-va-webhook-bot.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="TradingView.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://tradingview.vn/blog/ket-noi-tradingview-voi-san-giao-dich-va-webhook-bot.html">
+    <meta property="og:title" content="Hướng Dẫn Kết Nối TradingView Với Sàn Giao Dịch & Bắn Tín Hiệu Webhook Bot">
+    <meta property="og:description"
+        content="2 cách giao dịch tự động từ TradingView: kết nối trực tiếp qua Trading Panel và gửi tín hiệu JSON bằng Webhook Alerts.">
+    <meta property="og:image" content="https://tradingview.vn/assets/images/blog_alerts.png">
+    <meta property="article:published_time" content="2026-11-26">
+    <meta property="article:modified_time" content="2026-11-26">
+    <meta property="article:section" content="Tự động hóa">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kết Nối TradingView Với Sàn Giao Dịch & Webhook Bot">
+    <meta name="twitter:description"
+        content="Hướng dẫn kết nối Trading Panel và cấu hình Webhook Alerts chuẩn bảo mật trên TradingView.">
+    <meta name="twitter:image" content="https://tradingview.vn/assets/images/blog_alerts.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css?v=20261126-seo1">
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/favicon.png?v=20261124-brand1">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Hướng Dẫn Kết Nối TradingView Với Sàn Giao Dịch & Bắn Tín Hiệu Webhook Bot",
+                "description": "Hướng dẫn kết nối TradingView đặt lệnh trực tiếp trên sàn và thiết lập Webhook gửi tín hiệu JSON tự động sang bot giao dịch.",
+                "image": "https://tradingview.vn/assets/images/blog_alerts.png",
+                "datePublished": "2026-11-26",
+                "dateModified": "2026-11-26",
+                "inLanguage": "vi",
+                "author": { "@type": "Organization", "name": "TradingView.vn", "url": "https://tradingview.vn/" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TradingView.vn",
+                    "logo": { "@type": "ImageObject", "url": "https://tradingview.vn/assets/icons/favicon.png" }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://tradingview.vn/blog/ket-noi-tradingview-voi-san-giao-dich-va-webhook-bot.html"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://tradingview.vn/" },
+                    { "@type": "ListItem", "position": 2, "name": "Cẩm nang", "item": "https://tradingview.vn/#blog" },
+                    { "@type": "ListItem", "position": 3, "name": "Kết nối TradingView với sàn & Webhook Bot" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Gói TradingView nào hỗ trợ tính năng Webhook URL trong Alerts?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Tính năng Webhook URL trong Alerts được mở khóa từ gói Essential trở lên. Tuy nhiên, nếu chạy nhiều bot hoặc cần cảnh báo không bao giờ hết hạn (Open-ended alerts), gói Premium (400 cảnh báo) là lựa chọn tiêu chuẩn."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Đặt lệnh trực tiếp từ TradingView lên sàn có mất thêm phí không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Không. TradingView không thu bất kỳ phí giao dịch trung gian nào; bạn chỉ trả đúng mức spread hoặc phí giao dịch tiêu chuẩn của sàn (OKX, BingX, Pepperstone, OANDA, Interactive Brokers...)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Webhook TradingView có thể gửi tín hiệu trực tiếp vào Telegram được không?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Có. Bạn có thể trỏ Webhook URL về một Cloudflare Worker, Make.com, n8n hoặc server nhỏ để chuyển tiếp ngay thông báo tín hiệu (kèm giá, mã và khung thời gian) vào nhóm Telegram cá nhân hoặc cộng đồng."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                    alt="TradingView.vn">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Tự động hóa</span>
+            </div>
+            <h1 class="article-hero-title">Hướng Dẫn Kết Nối TradingView Với Sàn Giao Dịch &amp; Bắn Tín Hiệu Webhook Bot</h1>
+            <div class="article-meta">
+                <span>📅 26 Tháng 11, 2026</span>
+                <span>⏱️ 9 phút đọc</span>
+                <span>✍️ Đội ngũ TradingView.vn</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/blog_alerts.png" width="800" height="450"
+                alt="Minh họa kết nối TradingView với sàn giao dịch và hệ thống Webhook Bot"
+                class="article-featured-image" loading="eager">
+
+            <div class="article-body">
+                <div class="tldr-box">
+                    <strong class="tldr-title">Tóm tắt nhanh (Key Takeaways)</strong>
+                    <p>Bạn có thể giao dịch trực tiếp từ biểu đồ TradingView theo 2 cách: <strong>(1) Trading Panel</strong> để đặt lệnh tay ngay trên nến với các sàn hỗ trợ chính thức (OKX, BingX, Pepperstone, OANDA, Interactive Brokers, Paper Trading), hoặc <strong>(2) Webhook Alerts</strong> để tự động gửi gói tin JSON từ Pine Script sang bot giao dịch (3Commas, WunderTrading, OKX Signal Bot, Telegram) 24/7.</p>
+                </div>
+
+                <details class="article-toc" open>
+                    <summary>Mục lục bài viết</summary>
+                    <ol>
+                        <li><a href="#ket-noi-san">Cách 1: Kết nối trực tiếp sàn giao dịch qua Trading Panel</a></li>
+                        <li><a href="#webhook-la-gi">Cách 2: Tự động hóa hoàn toàn bằng Webhook Alerts</a></li>
+                        <li><a href="#cau-truc-json">Mẫu JSON chuẩn cho Webhook gửi sang Bot / Telegram</a></li>
+                        <li><a href="#bao-mat-webhook">4 quy tắc bảo mật &amp; quản trị rủi ro khi chạy Bot Webhook</a></li>
+                        <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ol>
+                </details>
+
+                <h2 id="ket-noi-san">1. Cách 1: Kết nối trực tiếp sàn giao dịch qua Trading Panel</h2>
+                <p>Đặt lệnh ngay trên biểu đồ giúp bạn kéo thả trực tiếp thanh Stop Loss và Take Profit bằng chuột thay vì gõ tay từng con số dễ nhầm lẫn:</p>
+                <ol>
+                    <li>Mở thanh đáy màn hình biểu đồ và chọn tab <strong>Trading Panel</strong>.</li>
+                    <li>Chọn sàn giao dịch bạn đang dùng (ví dụ: <strong>OKX, BingX, CoinEx</strong> cho Crypto; <strong>Pepperstone, OANDA, Eightcap, IC Markets</strong> cho Forex/Vàng; hoặc <strong>Paper Trading</strong> để luyện tập tiền ảo).</li>
+                    <li>Bấm <strong>Connect</strong> và đăng nhập xác thực OAuth của sàn.</li>
+                    <li>Nhấn phải chuột lên bất kỳ mức giá nào trên biểu đồ → chọn <strong>Trade → Buy/Sell Limit</strong> hoặc bật nút Buy/Sell nhanh ở góc trên bên trái.</li>
+                </ol>
+
+                <h2 id="webhook-la-gi">2. Cách 2: Tự động hóa hoàn toàn bằng Webhook Alerts</h2>
+                <p>Khi bạn đã có một chiến lược Pine Script đã kiểm thử kỹ lưỡng, <strong>Webhook URL</strong> cho phép TradingView gửi ngay một HTTP POST request đến máy chủ bot mỗi khi cảnh báo kích hoạt — hoàn toàn tự động ngay cả khi bạn đang ngủ.</p>
+                <ol>
+                    <li>Nhấn <code>Alt + A</code> để mở hộp thoại <strong>Create Alert</strong> và chọn điều kiện từ chiến lược hoặc chỉ báo Pine Script.</li>
+                    <li>Chuyển sang tab <strong>Notifications</strong> → tick chọn <strong>Webhook URL</strong> và dán đường dẫn HTTPS của bot (lưu ý: TradingView chỉ hỗ trợ cổng <code>80</code> và <code>443</code>).</li>
+                    <li>Quay lại tab <strong>Settings</strong>, nhập nội dung JSON vào ô <strong>Message</strong> và bấm <strong>Create</strong>.</li>
+                </ol>
+
+                <h2 id="cau-truc-json">3. Mẫu JSON chuẩn cho Webhook gửi sang Bot / Telegram</h2>
+                <p>TradingView hỗ trợ các biến động (placeholders) như <code>{{ticker}}</code>, <code>{{close}}</code>, <code>{{strategy.order.action}}</code>. Ví dụ mẫu JSON gửi lệnh chuẩn:</p>
+<pre><code>{
+  "secret": "YOUR_PRIVATE_PASSPHRASE",
+  "symbol": "{{ticker}}",
+  "exchange": "{{exchange}}",
+  "interval": "{{interval}}",
+  "action": "{{strategy.order.action}}",
+  "price": "{{close}}",
+  "time": "{{timenow}}"
+}</code></pre>
+                <blockquote>
+                    Mẹo cực quan trọng: Nếu dùng chiến lược Pine Script, hãy chọn tùy chọn kích hoạt <strong>Order fills only</strong> và thiết lập cảnh báo dạng <strong>Open-ended (Không hết hạn)</strong> trên gói Premium để bot không bao giờ bị ngắt kết nối giữa chừng sau 2 tháng.
+                </blockquote>
+
+                <h2 id="bao-mat-webhook">4. 4 quy tắc bảo mật &amp; quản trị rủi ro khi chạy Bot Webhook</h2>
+                <ul>
+                    <li><strong>Luôn đặt mật khẩu xác thực (Passphrase/Secret):</strong> Kiểm tra trường <code>secret</code> ở đầu server nhận Webhook và đối chiếu dải IP chính thức của TradingView.</li>
+                    <li><strong>Tắt quyền rút tiền (Disable Withdrawal) trên API Key sàn:</strong> API Key kết nối bot chỉ nên cấp quyền đọc dữ liệu và đặt lệnh (Trade), tuyệt đối không bật quyền rút tiền.</li>
+                    <li><strong>Chạy thử bằng Paper Trading hoặc vốn siêu nhỏ 1 tuần:</strong> Xác minh bot không bị gửi lệnh trùng (duplicate order) khi mạng rung lắc.</li>
+                    <li><strong>Luôn có Stop Loss cứng trên sàn:</strong> Không chỉ dựa vào tín hiệu đóng lệnh từ Webhook, đề phòng trường hợp sàn bảo trì hoặc mất kết nối internet.</li>
+                </ul>
+
+                <section id="faq" class="faq-section">
+                    <h2>5. Câu hỏi thường gặp (FAQ)</h2>
+                    <details class="faq-item" open>
+                        <summary>Gói TradingView nào hỗ trợ Webhook URL?</summary>
+                        <p>Từ gói <strong>Essential</strong> trở lên đều hỗ trợ Webhook URL. Tuy nhiên gói <strong>Premium</strong> cho 400 cảnh báo đồng thời và <em>cảnh báo không hết hạn</em>, phù hợp nhất cho hệ thống chạy bot ổn định dài hạn.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Đặt lệnh trực tiếp từ TradingView lên sàn có mất thêm phí không?</summary>
+                        <p>Không. TradingView không thu phí trung gian; bạn chỉ trả đúng phí giao dịch tiêu chuẩn của sàn đã kết nối.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Có gửi được cảnh báo Webhook vào Telegram không?</summary>
+                        <p>Có. Bạn chỉ cần nối Webhook URL qua Cloudflare Worker, n8n hoặc Make.com để định dạng tin nhắn và gửi tức thì vào Telegram Bot.</p>
+                    </details>
+                </section>
+
+                <aside class="related-articles">
+                    <h3>Bài viết liên quan nên đọc tiếp</h3>
+                    <ul>
+                        <li><a href="lap-trinh-pine-script-co-ban-tradingview.html">Lập trình Pine Script cơ bản trên TradingView</a></li>
+                        <li><a href="alerts-guide.html">Cách thiết lập cảnh báo không hết hạn trên TradingView</a></li>
+                        <li><a href="so-sanh-cac-goi-tradingview.html">So sánh chi tiết 3 gói Essential, Plus và Premium TradingView</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="article-cta">
+                <h3>Chạy Bot 24/7 Với 400 Cảnh Báo Không Hết Hạn</h3>
+                <p>Nâng cấp TradingView Premium chính hãng tại TradingView.vn — giá ưu đãi giảm đến 72%, hỗ trợ kỹ thuật xuyên suốt.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Xem Bảng Giá Ưu Đãi</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                        alt="TradingView.vn">
+                </div>
+                <p class="footer-text">© 2026 TradingView.vn — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/affiliate.js" defer></script>
+</body>
+
+</html>

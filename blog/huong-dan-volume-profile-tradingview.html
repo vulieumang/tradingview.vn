@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Volume Profile (VPVR, VPSV) TradingView Thực Chiến | TradingView.vn</title>
+    <meta name="description"
+        content="Cách đọc và giao dịch với Volume Profile trên TradingView: phân biệt VPVR, VPSV, FRVP, xác định POC, VAH, VAL và vùng thanh khoản cá mập chính xác.">
+    <link rel="canonical" href="https://tradingview.vn/blog/huong-dan-volume-profile-tradingview.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="TradingView.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://tradingview.vn/blog/huong-dan-volume-profile-tradingview.html">
+    <meta property="og:title" content="Hướng Dẫn Sử Dụng Volume Profile (VPVR, VPSV) Trên TradingView Thực Chiến">
+    <meta property="og:description"
+        content="Nắm vững POC, Value Area (VAH/VAL), HVN/LVN và 3 thiết lập vào lệnh độ xác suất cao với Volume Profile trên TradingView.">
+    <meta property="og:image" content="https://tradingview.vn/assets/images/blog_indicators.webp">
+    <meta property="article:published_time" content="2026-11-26">
+    <meta property="article:modified_time" content="2026-11-26">
+    <meta property="article:section" content="Chỉ báo kỹ thuật">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hướng Dẫn Volume Profile (VPVR, VPSV) Trên TradingView">
+    <meta name="twitter:description"
+        content="Phân biệt VPVR, VPSV, FRVP và cách tìm vùng hỗ trợ kháng cự tổ chức bằng Volume Profile.">
+    <meta name="twitter:image" content="https://tradingview.vn/assets/images/blog_indicators.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=20260221202930">
+    <link rel="stylesheet" href="../assets/css/article.css?v=20261126-seo1">
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg?v=20261124-brand1">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png?v=20261124-brand1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/favicon.png?v=20261124-brand1">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Hướng Dẫn Sử Dụng Volume Profile (VPVR, VPSV) Trên TradingView Thực Chiến",
+                "description": "Cách đọc và giao dịch với Volume Profile trên TradingView: phân biệt VPVR, VPSV, FRVP, xác định POC, VAH, VAL và vùng thanh khoản tổ chức.",
+                "image": "https://tradingview.vn/assets/images/blog_indicators.webp",
+                "datePublished": "2026-11-26",
+                "dateModified": "2026-11-26",
+                "inLanguage": "vi",
+                "author": { "@type": "Organization", "name": "TradingView.vn", "url": "https://tradingview.vn/" },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TradingView.vn",
+                    "logo": { "@type": "ImageObject", "url": "https://tradingview.vn/assets/icons/favicon.png" }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://tradingview.vn/blog/huong-dan-volume-profile-tradingview.html"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://tradingview.vn/" },
+                    { "@type": "ListItem", "position": 2, "name": "Cẩm nang", "item": "https://tradingview.vn/#blog" },
+                    { "@type": "ListItem", "position": 3, "name": "Hướng dẫn Volume Profile trên TradingView" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Gói TradingView nào mở khóa được chỉ báo Volume Profile (VPVR, VPSV)?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Các chỉ báo Volume Profile tự động như VPVR (Visible Range) và VPSV (Session Volume) yêu cầu tài khoản trả phí từ gói Essential trở lên. Riêng công cụ vẽ tay Fixed Range Volume Profile (FRVP) có sẵn trong thanh công cụ vẽ bên trái."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "POC (Point of Control) trong Volume Profile là gì?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "POC là mức giá có khối lượng giao dịch lớn nhất trong khoảng thời gian được đo. Đây là vùng đồng thuận giá mạnh nhất, thường đóng vai trò như nam châm hút giá quay lại hoặc hỗ trợ/kháng cự rất cứng."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Nên cài đặt Value Area Volume bao nhiêu phần trăm?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Mức tiêu chuẩn quốc tế theo lý thuyết Market Profile là 70% (hoặc 68% tương ứng 1 độ lệch chuẩn). Bạn nên giữ mặc định 70% trên TradingView để đồng bộ góc nhìn với các quỹ và trader chuyên nghiệp."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="../index.html"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: inherit;">
+                <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                    alt="TradingView.vn">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html#pricing">Bảng Giá</a>
+            <a href="../index.html#blog">Bài Viết</a>
+            <a href="../index.html#contact">Liên Hệ</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container" style="max-width: 800px;">
+            <div class="article-breadcrumb">
+                <a href="../index.html">Trang chủ</a>
+                <span>/</span>
+                <a href="../index.html#blog">Cẩm nang</a>
+                <span>/</span>
+                <span style="color: var(--color-primary)">Chỉ báo nâng cao</span>
+            </div>
+            <h1 class="article-hero-title">Hướng Dẫn Sử Dụng Volume Profile (VPVR, VPSV) Trên TradingView Thực Chiến</h1>
+            <div class="article-meta">
+                <span>📅 26 Tháng 11, 2026</span>
+                <span>⏱️ 9 phút đọc</span>
+                <span>✍️ Đội ngũ TradingView.vn</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-content-wrapper">
+        <div class="container">
+            <img src="../assets/images/blog_indicators.webp" width="320" height="320"
+                alt="Phân tích dòng tiền tổ chức bằng Volume Profile trên TradingView" class="article-featured-image"
+                loading="eager">
+
+            <div class="article-body">
+                <div class="tldr-box">
+                    <strong class="tldr-title">Tóm tắt nhanh (Key Takeaways)</strong>
+                    <p>Khác với cột Volume truyền thống đo khối lượng theo <em>thời gian</em>, <strong>Volume Profile</strong> hiển thị khối lượng giao dịch theo <em>từng mức giá</em> nằm ngang trên biểu đồ. Làm chủ 3 thành phần <strong>POC (Point of Control)</strong>, <strong>VAH/VAL (Vùng giá trị 70%)</strong> và <strong>LVN (Vùng trống thanh khoản)</strong> giúp bạn nhận diện chính xác nơi dòng tiền lớn đang tích lũy hoặc phân phối.</p>
+                </div>
+
+                <details class="article-toc" open>
+                    <summary>Mục lục bài viết</summary>
+                    <ol>
+                        <li><a href="#volume-profile-la-gi">Volume Profile khác gì Volume truyền thống?</a></li>
+                        <li><a href="#phan-biet-3-loai">Phân biệt 3 loại Volume Profile phổ biến trên TradingView</a></li>
+                        <li><a href="#cac-khai-niem-cot-loi">Giải mã POC, VAH, VAL, HVN và LVN</a></li>
+                        <li><a href="#3-chien-luoc-thuc-chien">3 chiến lược vào lệnh thực chiến với Volume Profile</a></li>
+                        <li><a href="#cai-dat-toi-uu">Thông số cài đặt Volume Profile tối ưu trên TradingView</a></li>
+                        <li><a href="#faq">Câu hỏi thường gặp (FAQ)</a></li>
+                    </ol>
+                </details>
+
+                <h2 id="volume-profile-la-gi">1. Volume Profile khác gì Volume truyền thống?</h2>
+                <p>Cột Volume phía dưới biểu đồ chỉ cho bạn biết <em>lúc mấy giờ</em> có nhiều người giao dịch, nhưng không cho biết dòng tiền thực sự tập trung dày đặc ở <em>mức giá nào</em>. Volume Profile xoay trục đo sang chiều ngang, vẽ ra biểu đồ mật độ khớp lệnh tại từng bước giá.</p>
+                <p>Nhờ vậy, thay vì đoán mò đường hỗ trợ/kháng cự bằng mắt thường, bạn nhìn thấy trực tiếp vùng giá mà các tổ chức (Smart Money) đã giải ngân mạnh nhất — nơi họ có động lực bảo vệ vị thế khi giá quay lại kiểm tra.</p>
+
+                <h2 id="phan-biet-3-loai">2. Phân biệt 3 loại Volume Profile phổ biến trên TradingView</h2>
+                <div class="table-wrap">
+                    <table class="seo-table">
+                        <thead>
+                            <tr>
+                                <th>Loại chỉ báo</th>
+                                <th>Cách tính toán</th>
+                                <th>Phù hợp với</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>VPVR</strong> (Visible Range)</td>
+                                <td>Tự động tính toàn bộ thanh nến đang hiển thị trên màn hình; zoom ra/vào tự cập nhật.</td>
+                                <td>Swing trader xác định vùng hỗ trợ/kháng cự tổng thể nhanh chóng.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>VPSV</strong> (Session Volume)</td>
+                                <td>Vẽ riêng từng hồ sơ khối lượng cho mỗi phiên giao dịch (ngày).</td>
+                                <td>Day trader / Scalper đánh XAU/USD, BTC/USDT, VN30F1M theo phiên.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FRVP</strong> (Fixed Range)</td>
+                                <td>Kéo tay cố định giữa 2 mốc thời gian (ví dụ từ đáy đến đỉnh một con sóng).</td>
+                                <td>Đo chính xác vùng tích lũy Wyckoff, sóng đẩy hoặc vùng đi ngang cụ thể.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="cac-khai-niem-cot-loi">3. Giải mã POC, VAH, VAL, HVN và LVN</h2>
+                <ul>
+                    <li><strong>POC (Point of Control):</strong> Đường màu đỏ ngang đánh dấu mức giá có khối lượng giao dịch lớn nhất. Giá có xu hướng bị hút về POC khi thị trường đi ngang.</li>
+                    <li><strong>Value Area (VA):</strong> Vùng chứa 70% tổng khối lượng giao dịch, được giới hạn bởi <strong>VAH (Value Area High)</strong> ở trên và <strong>VAL (Value Area Low)</strong> ở dưới.</li>
+                    <li><strong>HVN (High Volume Node):</strong> Những đỉnh nhô cao trên biểu đồ ngang — vùng cân bằng cung cầu, giá thường di chuyển chậm và hay bật lại tại đây.</li>
+                    <li><strong>LVN (Low Volume Node):</strong> Những vùng lõm sâu có khối lượng rất mỏng. Khi giá đi vào vùng LVN, nó thường trượt rất nhanh vì gần như không có lực cản.</li>
+                </ul>
+
+                <h2 id="3-chien-luoc-thuc-chien">4. 3 chiến lược vào lệnh thực chiến với Volume Profile</h2>
+                <h3>Chiến lược 1: Giao dịch đảo chiều tại biên Value Area (VAH / VAL)</h3>
+                <p>Trong thị trường đi ngang, nếu giá rớt ra khỏi VAL rồi nhanh chóng đóng nến quay ngược vào trong Value Area kèm nến rút chân (Pin Bar / Engulfing), xác suất cao giá sẽ đi xuyên qua POC để hướng lên biên đối diện VAH (quy tắc 80% trong Market Profile).</p>
+
+                <h3>Chiến lược 2: Giao dịch phá vỡ qua vùng LVN</h3>
+                <p>Khi giá tích lũy sát phía dưới VAH rồi bứt phá kèm Volume lớn đi vào vùng lõm LVN phía trên, đây là tín hiệu breakout chất lượng cao. Stop Loss có thể đặt gọn ngay dưới mép HVN vừa phá vỡ để tối ưu tỷ lệ R:R.</p>
+
+                <h3>Chiến lược 3: Kết hợp Naked POC (dPOC chưa kiểm tra)</h3>
+                <p>Dùng <strong>VPSV</strong> theo từng ngày: những đường POC của các ngày trước chưa từng bị giá chạm lại gọi là <em>Naked POC</em>. Khi giá quay về chạm Naked POC kết hợp với đường EMA hoặc vùng Order Block, đây là điểm chốt lời hoặc đảo chiều cực kỳ sắc nét.</p>
+
+                <h2 id="cai-dat-toi-uu">5. Thông số cài đặt Volume Profile tối ưu trên TradingView</h2>
+                <ul>
+                    <li><strong>Row Layout:</strong> Chọn <code>Number of Rows</code> = <code>24</code> (nhìn tổng quan mượt) hoặc <code>48–100</code> (nhìn chi tiết vùng LVN khi scalping).</li>
+                    <li><strong>Volume:</strong> Chọn <code>Up/Down</code> để nhìn rõ tương quan lực mua/bán ở từng mức giá.</li>
+                    <li><strong>Value Area Volume:</strong> Giữ mặc định <code>70</code>%.</li>
+                    <li><strong>Placement:</strong> Đặt <code>Right</code> và chỉnh độ rộng khoảng 25–30% màn hình để không che khuất cây nến hiện tại.</li>
+                </ul>
+
+                <section id="faq" class="faq-section">
+                    <h2>6. Câu hỏi thường gặp (FAQ)</h2>
+                    <details class="faq-item" open>
+                        <summary>Gói TradingView nào mở khóa được chỉ báo Volume Profile (VPVR, VPSV)?</summary>
+                        <p>Các chỉ báo tự động như VPVR và VPSV yêu cầu gói trả phí từ <strong>Essential</strong> trở lên. Riêng công cụ vẽ tay Fixed Range Volume Profile (FRVP) có thể dùng ở thanh công cụ vẽ bên trái.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>POC (Point of Control) trong Volume Profile là gì?</summary>
+                        <p>POC là mức giá có tổng khối lượng khớp lệnh cao nhất trong khoảng đo, đóng vai trò là vùng giá công bằng và hỗ trợ/kháng cự mạnh nhất.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Volume Profile có dùng được cho Forex không?</summary>
+                        <p>Forex là thị trường phi tập trung nên Volume trên TradingView là Tick Volume của từng broker (OANDA, FXCM...). Tuy nhiên Tick Volume có độ tương quan trên 90% với khối lượng hợp đồng tương lai CME, hoặc bạn có thể xem trực tiếp mã Futures như <code>6E1!</code> (EUR), <code>GC1!</code> (Vàng) để có Real Volume chuẩn xác nhất.</p>
+                    </details>
+                </section>
+
+                <aside class="related-articles">
+                    <h3>Bài viết liên quan nên đọc tiếp</h3>
+                    <ul>
+                        <li><a href="top-5-indicators.html">Top 5 chỉ báo TradingView hiệu quả nhất 2026</a></li>
+                        <li><a href="cach-dung-bar-replay-backtest-tren-tradingview.html">Cách dùng Bar Replay backtest chiến lược trên TradingView</a></li>
+                        <li><a href="so-sanh-cac-goi-tradingview.html">So sánh chi tiết 3 gói Essential, Plus và Premium TradingView</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="article-cta">
+                <h3>Mở Khóa Trọn Bộ Volume Profile (VPVR, VPSV, SVT)</h3>
+                <p>Sở hữu tài khoản TradingView chính hãng giá tiết kiệm 41%–72% so với giá gốc, kích hoạt nhanh trong 5 phút.</p>
+                <a href="../index.html#pricing" class="btn btn-secondary"
+                    style="background: white; color: var(--color-primary);">Xem Bảng Giá Ưu Đãi</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img class="brand-lockup" src="../assets/icons/logo.svg?v=20261124-brand1" width="384" height="64"
+                        alt="TradingView.vn">
+                </div>
+                <p class="footer-text">© 2026 TradingView.vn — Đối tác chính thức của TradingView.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/affiliate.js" defer></script>
+</body>
+
+</html>
